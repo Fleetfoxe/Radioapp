@@ -26,13 +26,13 @@ public class User {
 
     public User() {
     }
-    /*funkar inte RIKTIGT än
+
     public User(String email, String name, String password) {
         this.email = email;
         this.name   =name;
         this.password = password;
     }
-*/
+
     public long getId() {
         return id;
     }
@@ -61,9 +61,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "\nUser{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

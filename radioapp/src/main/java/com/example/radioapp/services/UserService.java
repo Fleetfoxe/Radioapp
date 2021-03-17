@@ -4,12 +4,14 @@ import com.example.radioapp.configs.MyUserDetailService;
 import com.example.radioapp.entities.User;
 import com.example.radioapp.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserService {
+
     @Autowired
     private MyUserDetailService detailService;
     @Autowired
@@ -20,11 +22,15 @@ public class UserService {
 
         return detailService.registerUser(user);
     }
-/*  funkar inte RIKTIGT än
-    public List<User> getUsers() {
-        System.out.println("funkar de?");
+
+    public List<User> getAll() {
         return userRepo.findAll();
     }
+    public User whoAmI(){
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepo.findByEmail(email);
 
- */
+    }
+
+
 }
