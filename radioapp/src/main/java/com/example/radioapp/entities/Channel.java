@@ -6,25 +6,30 @@ import javax.persistence.*;
 @Table(name="channels")
 public class Channel {
 
-
     @Id // primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // enables auto increment
     private long id;
 
     private String name;
 
-    private String broadcast;
-    private String program;
+    private String image;
+    private String scheduleurl;
 
     public Channel() {    }
+
+    public Channel(long id, String name, String image, String scheduleurl) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.scheduleurl = scheduleurl;
+    }
 
     @Override
     public String toString() {
         return "\nchannel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", broadcast='" + broadcast + '\'' +
-                ", program='" + program + '\'' +
+                ", broadcast='" + image + '\'' +
+                ", program='" + scheduleurl + '\'' +
                 '}';
     }
 
@@ -44,19 +49,19 @@ public class Channel {
         this.name = name;
     }
 
-    public String getBroadcast() {
-        return broadcast;
+    public String getImage() {
+        return image;
     }
 
-    public void setBroadcast(String broadcast) {
-        this.broadcast = broadcast;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getProgram() {
-        return program;
+    public String getScheduleurl() {
+        return scheduleurl;
     }
 
-    public void setProgram(String program) {
-        this.program = program;
+    public void setScheduleurl(String scheduleurl) {
+        this.scheduleurl = scheduleurl;
     }
 }
