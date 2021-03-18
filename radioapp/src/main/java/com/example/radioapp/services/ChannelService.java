@@ -17,7 +17,6 @@ public class ChannelService {
 
     private String channelApi = "http://api.sr.se/api/v2/channels?format=json";
 
-
     public List<Channel> getAllChannelsFromSR() {
         RestTemplate template = new RestTemplate();
 
@@ -25,38 +24,29 @@ public class ChannelService {
 
         List<Channel> channels = (List<Channel>) response.get("channels");
 
-        //System.out.println(channels);
-
         return channels;
     }
 
     public List<Channel> getChannelsV2() {
-
         RestTemplate template = new RestTemplate();
 
         // convert response to a Map
-
         Map response = template.getForObject(channelApi, Map.class);
 
         // for easy extraction of the results data
-
         List<Map> channelMaps = (List<Map>) response.get("channels");
 
         // if no match, return null
-
         if(channelMaps == null) return null;
 
         List<Channel> channels = new ArrayList<>();
 
         // loop all channels and extract the data we want
-
         for(Map channel : channelMaps) {
 
             // create a channel object with extracted data
-
             Channel channel1 = new Channel(
 
-                   // Long.parseLong((String) channel.get("id")),
                     Long.valueOf((int)channel.get("id")),    // id
                     (String)channel.get("name"),                   // name
                     (String)channel.get("image"),                   // image url
@@ -64,16 +54,8 @@ public class ChannelService {
             );
 
             // populate list with freshly created channels
-
             channels.add(channel1);
         }
-        // debug
-        System.out.println(channels);
-
-        // Loop list of channels and save each one to database
-
-        channels.forEach((n) -> channelRepo.save(n));
-
         return channels;
     }
 

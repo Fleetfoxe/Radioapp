@@ -29,9 +29,8 @@ public class ChannelController {
     }
 
     @GetMapping("/rest/sr/ch2")
-    public List<Channel> getConvertedChannels() {
+    public List<Channel> getAllChannelsSRcleaned() {
         return channelService.getChannelsV2();
     }
-
 
 }
