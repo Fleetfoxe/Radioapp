@@ -1,6 +1,8 @@
 package com.example.radioapp.configs;
 
+import com.example.radioapp.entities.Friend;
 import com.example.radioapp.entities.User;
+import com.example.radioapp.repositories.FriendRepo;
 import com.example.radioapp.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -9,9 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import javax.annotation.PostConstruct;
-
-
 
 
 @Configuration
@@ -23,6 +22,8 @@ public class MyUserDetailService implements UserDetailsService {
 
     @Autowired
     private UserRepo userRepo;
+    @Autowired
+    private FriendRepo friendRepo;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -43,6 +44,7 @@ public class MyUserDetailService implements UserDetailsService {
         }
         return null;
     }
+
 
 
 

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -12,9 +14,49 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String email;
     String name;
+
     private String password;
+/*
+    @ManyToMany
+    @JoinTable(name="friends",joinColumns = @JoinColumn(name="id"), inverseJoinColumns = @JoinColumn(name="friend"))
+    private Set<User> userFriends;
+*/
+
+
+
+   /* private Friend friend;
+
+    public class Friend{
+        public String email;
+
+        @Override
+        public String toString() {
+            return "\nFriend{" +
+                    "email='" + email + '\'' +
+                    '}';
+        }
+    }
+
+
+
+    public Friend getFriend() {
+        return friend;
+    }
+
+    public void setFriend(Friend friend) {
+        this.friend = friend;
+    }
+
+    */
+
+
+    public User(long id, String email) {
+        this.id = id;
+        this.email = email;
+    }
 
     public String getName() {
         return name;
