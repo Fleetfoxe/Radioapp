@@ -13,10 +13,18 @@ public class Episode {
    private String starttimeutc;
    private String endtimeutc;
   // private String program;
-   private long channelid;
+   private int channelid;
    private String imageurl;
 
     public Episode() {
+    }
+
+    public Episode(long id, String title, String starttimeutc, String endtimeutc, String imageurl) {
+        this.id = id;
+        this.title = title;
+        this.starttimeutc = starttimeutc;
+        this.endtimeutc = endtimeutc;
+        this.imageurl = imageurl;
     }
 
     public Episode(String title) {
@@ -33,7 +41,7 @@ public class Episode {
         this.imageurl = imageurl;
     }*/
 
-    public Episode(long id, String title, String starttimeutc, String endtimeutc, long channelid, String imageurl) {
+    public Episode(long id, String title, String starttimeutc, String endtimeutc, int channelid, String imageurl) {
         this.id = id;
         this.title = title;
         this.starttimeutc = starttimeutc;
@@ -95,11 +103,11 @@ public class Episode {
         this.program = program;
     }*/
 
-    public long getChannelid() {
+    public int getChannelid() {
         return channelid;
     }
 
-    public void setChannelid(long channelid) {
+    public void setChannelid(int channelid) {
         this.channelid = channelid;
     }
 

@@ -21,9 +21,6 @@ public class EpisodeService {
 
         Map response = template.getForObject(episodeApi+programId, Map.class);
 
-       /* List<Episode> episodes = (List<Episode>)response.get("episodes");
-
-        return episodes;*/
         List<Map> episodeMaps = (List<Map>)response.get("episodes");
 
         if(episodeMaps==null) return null;
@@ -33,24 +30,20 @@ public class EpisodeService {
         for(Map episode :episodeMaps){
             //create a episode object with extracted data
             // id, title, starttimeutc, endtimeutc, program, channel, imageurl
-           /* List<Map> broadcastTimeMaps=(List<Map>)episode.get("broadcasttime");
-            for(Map brodcast :broadcastTimeMaps){
-                String startT= (String)broadcastTimeMaps.get();
-                String endTime= (String)brodcast.get("endtimeutc");*/
 
             Map broadcastTime=(Map) episode.get("broadcasttime");
             System.out.println((String)broadcastTime.get("starttimeutc"));
             Episode episode1= new Episode(
                     (long) (int) episode.get("id"),
                     (String)episode.get("title"),
-                    ((String)broadcastTime.get("starttimeutc")).replaceFirst("^.*Date\\((\\d+)\\).*$", "$1"),
+                    (String)broadcastTime.get("starttimeutc"),
                     (String)broadcastTime.get("endtimeutc"),
-                   // (String)episode.get("program"),
-                    (long)(int) episode.get("channelid"),
+                    //(int)episode.get("channelid"),    We can't make this work, returns null value
                     (String)episode.get("imageurl")
                     );
 
-
+            // How to convert date format to string
+            //((String)broadcastTime.get("starttimeutc")).replaceFirst("^.*Date\\((\\d+)\\).*$", "$1"),
 
             episodes.add(episode1);
 
