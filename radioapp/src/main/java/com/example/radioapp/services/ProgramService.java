@@ -22,12 +22,12 @@ public class ProgramService {
 
     //http://api.sr.se/api/v2/programs/index?channelid=164&programcategoryid - get all the program names and what category
 
-    private String programApi = "http://api.sr.se/api/v2/programs/index?channelid=164&programcategoryid?format=json";
+    private String programApi = "http://api.sr.se/api/v2/programs/index?format=json&programcategoryid=";
 
-    public List<Program> getAllProgramNamesFromSr() {
+    public List<Program> getAllProgramNamesFromSr(String id) {
         RestTemplate template = new RestTemplate();
 
-        Map response = template.getForObject(programApi, Map.class);
+        Map response = template.getForObject(programApi + id, Map.class);
 
         List<Program> programs = (List<Program>) response.get("programs");
 

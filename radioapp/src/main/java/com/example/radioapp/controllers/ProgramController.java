@@ -16,8 +16,13 @@ public class ProgramController {
     @Autowired
     private ProgramService programService;
 
-    @GetMapping("/rest/sr/categories/program/names")
-    public List<Program> getAllCategoriesApi() {
-        return programService.getAllProgramNamesFromSr();
+    @GetMapping("/rest/sr/categories/program/{id}")
+    public List<Program> getProgramsByCategoryById(@PathVariable String id) {
+        return programService.getAllProgramNamesFromSr(id);
     }
 }
+/*
+    @GetMapping("/rest/categories/{id}")
+    public Category getCategoryById(@PathVariable long id){
+        return categoryService.getById(id);
+    }*/
