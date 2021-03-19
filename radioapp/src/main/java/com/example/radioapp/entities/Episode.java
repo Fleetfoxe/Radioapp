@@ -12,14 +12,18 @@ public class Episode {
    private String title;
    private String starttimeutc;
    private String endtimeutc;
-   private String program;
-   private String channel;
+  // private String program;
+   private long channelid;
    private String imageurl;
 
     public Episode() {
     }
 
-    public Episode(long id, String title, String starttimeutc, String endtimeutc, String program, String channel, String imageurl) {
+    public Episode(String title) {
+        this.title = title;
+    }
+
+  /*  public Episode(long id, String title, String starttimeutc, String endtimeutc, String program, long channel, String imageurl) {
         this.id = id;
         this.title = title;
         this.starttimeutc = starttimeutc;
@@ -27,14 +31,14 @@ public class Episode {
         this.program = program;
         this.channel = channel;
         this.imageurl = imageurl;
-    }
+    }*/
 
-    public Episode(String title, String starttimeutc, String endtimeutc, String program, String channel, String imageurl) {
+    public Episode(long id, String title, String starttimeutc, String endtimeutc, long channelid, String imageurl) {
+        this.id = id;
         this.title = title;
         this.starttimeutc = starttimeutc;
         this.endtimeutc = endtimeutc;
-        this.program = program;
-        this.channel = channel;
+        this.channelid = channelid;
         this.imageurl = imageurl;
     }
 
@@ -45,8 +49,8 @@ public class Episode {
                 ", title='" + title + '\'' +
                 ", starttimeutc='" + starttimeutc + '\'' +
                 ", endtimeutc='" + endtimeutc + '\'' +
-                ", program='" + program + '\'' +
-                ", channel='" + channel + '\'' +
+                //", program='" + program + '\'' +
+                ", channel id='" + channelid + '\'' +
                 ", imageurl='" + imageurl + '\'' +
                 '}';
     }
@@ -83,20 +87,20 @@ public class Episode {
         this.endtimeutc = endtimeutc;
     }
 
-    public String getProgram() {
+  /*  public String getProgram() {
         return program;
     }
 
     public void setProgram(String program) {
         this.program = program;
+    }*/
+
+    public long getChannelid() {
+        return channelid;
     }
 
-    public String getChannel() {
-        return channel;
-    }
-
-    public void setChannel(String channel) {
-        this.channel = channel;
+    public void setChannelid(long channelid) {
+        this.channelid = channelid;
     }
 
     public String getImageurl() {
