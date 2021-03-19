@@ -27,7 +27,7 @@ public class ChannelService {
         return channels;
     }
 
-    public List<Channel> getChannelsV2() {
+    public List<Channel> getChannelsCleaned() {
         RestTemplate template = new RestTemplate();
 
         // convert response to a Map

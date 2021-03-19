@@ -13,13 +13,8 @@ public class ChannelController {
     @Autowired
     private ChannelService channelService;
 
-    @GetMapping("/hello")
-    public String helloworld() {
-        return "Hello World!";
-    }
-
     @GetMapping("/rest/channels")
-    public List<Channel> getAllChannels() {
+    public List<Channel> getAllChannelsFromDB() {
         return channelService.getAll();
     }
 
@@ -28,9 +23,8 @@ public class ChannelController {
         return channelService.getAllChannelsFromSR();
     }
 
-    @GetMapping("/rest/sr/ch2")
+    @GetMapping("/rest/sr/channelscleaned")
     public List<Channel> getAllChannelsSRcleaned() {
-        return channelService.getChannelsV2();
+        return channelService.getChannelsCleaned();
     }
-
 }
