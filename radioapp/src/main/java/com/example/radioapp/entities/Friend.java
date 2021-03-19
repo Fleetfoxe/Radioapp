@@ -21,6 +21,7 @@ public class Friend {
     }
 
     public Friend() {
+        
     }
 
     public long getId() {

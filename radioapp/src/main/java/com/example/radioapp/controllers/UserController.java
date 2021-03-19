@@ -45,8 +45,8 @@ public class UserController {
         return userService.getById(id);
     }
     @PostMapping("/rest/friends")
-    public Friend friendShip(@RequestBody Friend email){
-        return userService.addFriend(email);
+    public Friend friendShip(@RequestBody String friend){
+        return userService.addFriend(friend);
     }
 
 }

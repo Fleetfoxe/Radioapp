@@ -39,13 +39,13 @@ public class UserService {
         return userRepo.findByEmail(email);
     }
 
-   public Friend addFriend(Friend friendEmail){
+   public Friend addFriend(String friendEmail){
         Friend friend1 = new Friend();
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        friend1.setUser(userRepo.findByEmail(email));
-        friend1.setFriend(friendEmail.toString());
+        String userEmail =SecurityContextHolder.getContext().getAuthentication().getName();
+        friend1.setUser(userEmail);
+        friend1.setFriend(friendEmail);
 
-    return friendRepo.addMyFriend(friend1);
+    return friendRepo.save(friend1);
    }
 
 
