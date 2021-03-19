@@ -29,7 +29,21 @@ public class ProgramService {
 
         Map response = template.getForObject(programApi + id, Map.class);
 
-        List<Program> programs = (List<Program>) response.get("programs");
+        //List<Program> programs = (List<Program>) response.get("programs");
+
+        List<Map> programMaps = (List<Map>)response.get("programs");
+
+        if(programMaps==null) return null;
+
+        List<Program> programs = new ArrayList<>();
+
+        for (Map program : programMaps){
+            Map description = (Map) program.get("description");
+            Program program1 = new Program(
+                    (String)program.get("description"),
+                    (String)program.get("programcategory")
+            );
+        }
 
         return programs;
     }

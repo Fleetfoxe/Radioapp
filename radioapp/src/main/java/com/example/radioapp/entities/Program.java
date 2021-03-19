@@ -8,20 +8,15 @@ public class Program {
 
     @Id
     private String description;
-    private String programCategory;
+    private String programcategory;
     private String id;
     private String name;
 
 
-    public Program() {
-    }
-
-
-    public Program(String description, String programCategory, String id, String name) {
+    public Program(String description, String programcategory) {
         this.description = description;
-        this.programCategory = programCategory;
+        this.programcategory = programcategory;
         this.id = id;
-        this.name = name;
     }
 
     public String getDescription() {
@@ -32,12 +27,12 @@ public class Program {
         this.description = description;
     }
 
-    public String getProgramCategory() {
-        return programCategory;
+    public String getProgramcategory() {
+        return programcategory;
     }
 
-    public void setProgramCategory(String programCategory) {
-        this.programCategory = programCategory;
+    public void setProgramcategory(String programcategory) {
+        this.programcategory = programcategory;
     }
 
     public String getId() {
