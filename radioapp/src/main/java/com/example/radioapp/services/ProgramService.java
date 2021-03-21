@@ -24,25 +24,34 @@ public class ProgramService {
 
     private String programApi = "http://api.sr.se/api/v2/programs/index?format=json&programcategoryid=";
 
-    public List<Program> getAllProgramNamesFromSr(String id) {
+    public List<Program> getAllProgramNamesFromSr(long id) {
         RestTemplate template = new RestTemplate();
 
         Map response = template.getForObject(programApi + id, Map.class);
 
         //List<Program> programs = (List<Program>) response.get("programs");
 
-        List<Map> programMaps = (List<Map>)response.get("programs");
+        List<Map> programMaps = (List<Map>)response.get("programcategory");
 
         if(programMaps==null) return null;
 
         List<Program> programs = new ArrayList<>();
 
         for (Map program : programMaps){
-            Map description = (Map) program.get("description");
+
+            Map programCategory = (Map) program.get("programcategory");
+            List<Long> idSr = (List<Long>) programCategory.get("id");
+            List<String> nameSr = (List<String>) programCategory.get("name");
+
             Program program1 = new Program(
                     (String)program.get("description"),
-                    (String)program.get("programcategory")
+                    idSr.get(1),
+                    nameSr.get(1),
+                    (String)program.get("programurl")
             );
+
+            programs.add(program1);
+
         }
 
         return programs;

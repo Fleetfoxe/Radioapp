@@ -1,22 +1,28 @@
 package com.example.radioapp.entities;
 
 import javax.persistence.*;
+import java.util.Map;
 
 @Entity
-@Table(name = "programs")
 public class Program {
 
     @Id
     private String description;
-    private String programcategory;
-    private String id;
-    private String name;
+    private String programurl;
 
-
-    public Program(String description, String programcategory) {
+    public Program(String description, String programurl) {
         this.description = description;
-        this.programcategory = programcategory;
-        this.id = id;
+        this.programurl = programurl;
+
+    }
+
+    public Program() {}
+
+    public Program(String description) {
+        this.description = description;
+    }
+
+    public Program(String description, Long id, String s, String programurl) {
     }
 
     public String getDescription() {
@@ -27,35 +33,38 @@ public class Program {
         this.description = description;
     }
 
-    public String getProgramcategory() {
-        return programcategory;
+    public String getProgramurl() {
+        return programurl;
     }
 
-    public void setProgramcategory(String programcategory) {
-        this.programcategory = programcategory;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setProgramurl(String programurl) {
+        this.programurl = programurl;
     }
 
     @Override
     public String toString() {
-        return "\nProgram{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+        return "Program{" +
+                "description='" + description + '\'' +
+                ", programurl='" + programurl + '\'' +
                 '}';
     }
+
+    /*
+    public class ProgramCategory{
+    private long id;
+    private String name;
+
+        @Override
+        public String toString() {
+            return "{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
+        */
 }
+
+
+
+
+
