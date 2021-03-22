@@ -36,28 +36,25 @@ public class UserService {
 
     }
 
-    public void createFavorite() {
-        Favorite favorite = new Favorite();
-        favorite.setEpisode(5);
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        favorite.setUser(userRepo.findByEmail(email));
-        favoriteRepo.save(favorite);
-    }
-
-
-    public void createFavorite2(long episodeid) {
-        if (!favoriteRepo.existsFavoriteByEpisode(episodeid)) {
-            Favorite favorite = new Favorite();
-            favorite.setEpisode(episodeid);
-            String email = SecurityContextHolder.getContext().getAuthentication().getName();
-            favorite.setUser(userRepo.findByEmail(email));
-            favoriteRepo.save(favorite);
-        }
-    }
-
     public List<Favorite> getAllFavorites() {
         return favoriteRepo.findAll();
     }
 
 
+    public Favorite addFavorite(Favorite favorite) {
+        User user = whoAmI();
+
+        //if Logged in
+        if (user != null) {
+            favorite.setUser(user);
+            //If episode id is sent in body
+            if(favorite.getEpisodeId() != 0){
+                //If the favorite episode doesn't already exist
+                if (!favoriteRepo.existsFavoriteByEpisodeId(favorite.getEpisodeId())) {
+                    return favoriteRepo.save(favorite);
+                }
+            }
+        }
+        return null;
+    }
 }

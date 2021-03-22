@@ -35,18 +35,13 @@ public class UserController {
         return userService.whoAmI();
     }
 
-    @GetMapping("/rest/favorites/test/create")
-    public void createFavorite() {
-        userService.createFavorite();
-    }
-
-    @GetMapping("/rest/favorites/{episodeid}")
-    public void createFavorite2(@PathVariable long episodeid) {
-        userService.createFavorite2(episodeid);
-    }
-
     @GetMapping("/rest/favorites")
     public List<Favorite> getAllFavorites() {
         return userService.getAllFavorites();
+    }
+
+    @PutMapping("/rest/favorites/add-favorite")
+    public Favorite addFavorite(@RequestBody Favorite favorite) {
+        return userService.addFavorite(favorite);
     }
 }

@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FavoriteRepo extends JpaRepository<Favorite, Long> {
-    boolean existsFavoriteByEpisode(long episode);
+    boolean existsFavoriteByEpisodeId(long episode);
 }

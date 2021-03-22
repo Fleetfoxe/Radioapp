@@ -12,7 +12,7 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private long episode;
+    private long episodeId;
 
     @ManyToOne
     @JsonIgnore
@@ -20,10 +20,10 @@ public class Favorite {
 
     public Favorite() {    }
 
-    public Favorite(long id, User user, long episode) {
+    public Favorite(long id, User user, long episodeId) {
         this.id = id;
         this.user = user;
-        this.episode = episode;
+        this.episodeId = episodeId;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Favorite {
         return "Favorite{" +
                 "id=" + id +
                 ", user=" + user +
-                ", episode=" + episode +
+                ", episode=" + episodeId +
                 '}';
     }
 
@@ -51,11 +51,11 @@ public class Favorite {
         this.user = user;
     }
 
-    public long getEpisode() {
-        return episode;
+    public long getEpisodeId() {
+        return episodeId;
     }
 
-    public void setEpisode(long episode) {
-        this.episode = episode;
+    public void setEpisodeId(long episodeId) {
+        this.episodeId = episodeId;
     }
 }
