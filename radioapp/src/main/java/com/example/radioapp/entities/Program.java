@@ -3,48 +3,87 @@ package com.example.radioapp.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "programs")
 public class Program {
 
     @Id
     private String description;
-    private String programCategory;
-    private String id;
+    private String programurl;
+    private String programimage;
+    private int programcategory;
+    private int id;
     private String name;
+    private int channelid;
+    private String channelname;
 
+    //Test constructor
+
+
+    public Program(String description, String programurl, String programimage, int id, String name, int channelid, String channelname) {
+        this.description = description;
+        this.programurl = programurl;
+        this.programimage = programimage;
+        this.id = id;
+        this.name = name;
+        this.channelid = channelid;
+        this.channelname = channelname;
+    }
+
+    public Program(String description, String programurl, String programimage, int programcategory, int id, String name, int channelid, String channelname) {
+        this.description = description;
+        this.programurl = programurl;
+        this.programimage = programimage;
+        this.programcategory = programcategory;
+        this.id = id;
+        this.name = name;
+        this.channelid = channelid;
+        this.channelname = channelname;
+
+    }
 
     public Program() {
     }
 
-
-    public Program(String description, String programCategory, String id, String name) {
-        this.description = description;
-        this.programCategory = programCategory;
-        this.id = id;
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
+    public Program(String description) {
         this.description = description;
     }
 
-    public String getProgramCategory() {
-        return programCategory;
+    public Program(String description, int programcategory) {
+        this.description = description;
+        this.programcategory = programcategory;
     }
 
-    public void setProgramCategory(String programCategory) {
-        this.programCategory = programCategory;
+    //public Program(String description, Long aLong, String name, String programurl) { }
+
+
+    public int getChannelid() {
+        return channelid;
     }
 
-    public String getId() {
+    public void setChannelid(int channelid) {
+        this.channelid = channelid;
+    }
+
+    public String getChannelname() {
+        return channelname;
+    }
+
+    public void setChannelname(String channelname) {
+        this.channelname = channelname;
+    }
+
+    public String getProgramimage() {
+        return programimage;
+    }
+
+    public void setProgramimage(String programimage) {
+        this.programimage = programimage;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -56,11 +95,55 @@ public class Program {
         this.name = name;
     }
 
+    public int getProgramcategory() {
+        return programcategory;
+    }
+
+    public void setProgramcategory(int programcategory) {
+        this.programcategory = programcategory;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getProgramurl() {
+        return programurl;
+    }
+
+    public void setProgramurl(String programurl) {
+        this.programurl = programurl;
+    }
+
     @Override
     public String toString() {
-        return "\nProgram{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+        return "Program{" +
+                "description='" + description + '\'' +
+                ", programurl='" + programurl + '\'' +
                 '}';
     }
+
+
+    public class ProgramCategory {
+        private long id;
+        private String name;
+
+        @Override
+        public String toString() {
+            return "{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
+
+    }
 }
+
+
+
+
+
