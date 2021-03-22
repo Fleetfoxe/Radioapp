@@ -13,6 +13,7 @@ public class Favorite {
     private long id;
 
     private long episodeId;
+    private long programId;
 
     @ManyToOne
     @JsonIgnore
@@ -26,13 +27,29 @@ public class Favorite {
         this.episodeId = episodeId;
     }
 
+    public Favorite(long id, long episodeId, long programId, User user) {
+        this.id = id;
+        this.episodeId = episodeId;
+        this.programId = programId;
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Favorite{" +
                 "id=" + id +
+                ", episodeId=" + episodeId +
+                ", programId=" + programId +
                 ", user=" + user +
-                ", episode=" + episodeId +
                 '}';
+    }
+
+    public long getProgramId() {
+        return programId;
+    }
+
+    public void setProgramId(long programId) {
+        this.programId = programId;
     }
 
     public long getId() {

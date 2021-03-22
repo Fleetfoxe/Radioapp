@@ -47,13 +47,11 @@ public class UserService {
         //if Logged in
         if (user != null) {
             favorite.setUser(user);
-            //If episode id is sent in body
-            if(favorite.getEpisodeId() != 0){
-                //If the favorite episode doesn't already exist
-                if (!favoriteRepo.existsFavoriteByEpisodeId(favorite.getEpisodeId())) {
-                    return favoriteRepo.save(favorite);
-                }
-            }
+            //If the favorite episode doesn't already exist
+                //if ((!favoriteRepo.existsFavoriteByEpisodeId(favorite.getEpisodeId()))||!favoriteRepo
+                // .existsFavoriteByProgramId(favorite.getProgramId())) {
+                return favoriteRepo.save(favorite);
+                //}
         }
         return null;
     }
