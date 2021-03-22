@@ -21,17 +21,17 @@ public class ProgramService {
     private ProgramRepo programRepo;
 
     //http://api.sr.se/api/v2/programs/index?channelid=164&programcategoryid - get all the program names and what category
-
+    // indent=false&size=25&page=4  -- to get all pages??
     private String programApi = "http://api.sr.se/api/v2/programs/index?format=json&programcategoryid=";
 
-    public List<Program> getAllProgramNamesFromSr(long id) {
+    public List<Program> getAllProgramNamesFromSrById(long id) {
         RestTemplate template = new RestTemplate();
 
         Map response = template.getForObject(programApi + id, Map.class);
 
         //List<Program> programs = (List<Program>) response.get("programs");
 
-        List<Map> programMaps = (List<Map>)response.get("programcategory");
+        List<Map> programMaps = (List<Map>)response.get("programs");
 
         if(programMaps==null) return null;
 
@@ -40,14 +40,17 @@ public class ProgramService {
         for (Map program : programMaps){
 
             Map programCategory = (Map) program.get("programcategory");
-            List<Long> idSr = (List<Long>) programCategory.get("id");
-            List<String> nameSr = (List<String>) programCategory.get("name");
+            //List<Long> idSr = (List<Long>) programCategory.get("id");
+            //List<String> nameSr = (List<String>) programCategory.get("name");
 
             Program program1 = new Program(
                     (String)program.get("description"),
-                    idSr.get(1),
-                    nameSr.get(1),
-                    (String)program.get("programurl")
+                    (String)program.get("programurl"),
+                    (String)program.get("programimage"),
+                    (int) programCategory.get("id"),
+                    (int) program.get("id"),
+                    (String)program.get("name")
+                    //nameSr.get(1),
             );
 
             programs.add(program1);

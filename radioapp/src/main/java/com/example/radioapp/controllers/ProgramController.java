@@ -18,7 +18,7 @@ public class ProgramController {
 
     @GetMapping("/rest/sr/categories/program/{id}")
     public List<Program> getProgramsByCategoryById(@PathVariable long id) {
-        return programService.getAllProgramNamesFromSr(id);
+        return programService.getAllProgramNamesFromSrById(id);
     }
 }
 /*
