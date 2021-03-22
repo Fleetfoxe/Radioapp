@@ -1,9 +1,7 @@
 package com.example.radioapp.services;
 
 import com.example.radioapp.configs.MyUserDetailService;
-import com.example.radioapp.entities.Friend;
 import com.example.radioapp.entities.User;
-import com.example.radioapp.repositories.FriendRepo;
 import com.example.radioapp.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,10 +17,6 @@ public class UserService {
     private MyUserDetailService detailService;
     @Autowired
     private UserRepo userRepo;
-    @Autowired
-    private FriendRepo friendRepo;
-
-    //ArrayList<Friend> friendsList = new ArrayList<>();
 
 
     public User register(User user){
@@ -36,27 +30,12 @@ public class UserService {
 
     public User whoAmI(){
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
         return userRepo.findByEmail(email);
     }
 
-   public Friend addFriend(String friendEmail){
-        Friend friend1 = new Friend();
-        String userEmail =SecurityContextHolder.getContext().getAuthentication().getName();
-        friend1.setUser(userEmail);
-        friend1.setFriend(friendEmail);
-
-    return friendRepo.save(friend1);
-   }
 
 
-    /*
-    public ArrayList<String> friendEmail(String email){
-        ArrayList<String> friendList = new ArrayList<>();
-        friendList.add(email);
-        return friendList;
-    }
-
-     */
     public User getById(long id){
         Optional<User> user = userRepo.findById(id);
             if(user.isPresent()){
@@ -68,4 +47,26 @@ public class UserService {
     }
 
 
+    public User addFriend(User friend) {
+        User user = whoAmI();//get logged in user
+
+        //if logged in
+        if(user != null){
+            user.addFriend(friend);
+            return userRepo.save(user);
+        }
+        //user is not logged in
+        return null;
+    }
+    public User deleteFriend(User friend){
+        User user = whoAmI();//get logged in user
+
+        //if logged in
+        if(user != null){
+            user.deleteFriend(friend);
+            return userRepo.save(user);
+        }
+        //user is not logged in
+        return null;
+    }
 }

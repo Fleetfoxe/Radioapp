@@ -1,8 +1,6 @@
 package com.example.radioapp.configs;
 
-import com.example.radioapp.entities.Friend;
 import com.example.radioapp.entities.User;
-import com.example.radioapp.repositories.FriendRepo;
 import com.example.radioapp.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -22,8 +20,7 @@ public class MyUserDetailService implements UserDetailsService {
 
     @Autowired
     private UserRepo userRepo;
-    @Autowired
-    private FriendRepo friendRepo;
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
