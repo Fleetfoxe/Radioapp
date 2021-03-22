@@ -12,16 +12,31 @@ public class Program {
     private int programcategory;
     private int id;
     private String name;
+    private int channelid;
+    private String channelname;
+
+    //Test constructor
 
 
+    public Program(String description, String programurl, String programimage, int id, String name, int channelid, String channelname) {
+        this.description = description;
+        this.programurl = programurl;
+        this.programimage = programimage;
+        this.id = id;
+        this.name = name;
+        this.channelid = channelid;
+        this.channelname = channelname;
+    }
 
-    public Program(String description, String programurl, String programimage, int programcategory, int id, String name) {
+    public Program(String description, String programurl, String programimage, int programcategory, int id, String name, int channelid, String channelname) {
         this.description = description;
         this.programurl = programurl;
         this.programimage = programimage;
         this.programcategory = programcategory;
         this.id = id;
         this.name = name;
+        this.channelid = channelid;
+        this.channelname = channelname;
 
     }
 
@@ -39,6 +54,22 @@ public class Program {
 
     //public Program(String description, Long aLong, String name, String programurl) { }
 
+
+    public int getChannelid() {
+        return channelid;
+    }
+
+    public void setChannelid(int channelid) {
+        this.channelid = channelid;
+    }
+
+    public String getChannelname() {
+        return channelname;
+    }
+
+    public void setChannelname(String channelname) {
+        this.channelname = channelname;
+    }
 
     public String getProgramimage() {
         return programimage;
