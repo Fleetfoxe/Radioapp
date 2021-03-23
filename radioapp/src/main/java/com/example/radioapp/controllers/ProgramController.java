@@ -30,9 +30,11 @@ public class ProgramController {
     public List<Program> findProgram(@PathVariable String name) {
         return programService.getProgramFromSr(name);
     }
-    @GetMapping("/rest/sr/channel/{name}")
-    public List<Program> getProgramsByChannel(@PathVariable String name) {
-        return programService.getProgramFromSr(name);
+
+    //All program on a channel with name
+    @GetMapping("/rest/sr/channel/{id}")
+    public List<Program> getProgramsOnChannel(@PathVariable long id) {
+        return programService.getProgramsOnChannel(id);
     }
 
 
