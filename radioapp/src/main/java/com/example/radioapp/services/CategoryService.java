@@ -1,7 +1,8 @@
 package com.example.radioapp.services;
 
 
-import com.example.radioapp.entities.Category;
+import com.example.radioapp.entities.*;
+import com.example.radioapp.entities.Program;
 import com.example.radioapp.repositories.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,10 @@ public class CategoryService {
 
         return categories;
     }
+    public List<Category> getAll() {
+       return categoryRepo.findAll();
+    }
+}
 
 /*  IFALL ---> SPARA TILL DB
     public List<Category> getCategories() {
@@ -63,18 +68,41 @@ public class CategoryService {
         return categories;
     }
 */
-
-    public List<Category> getAll() {
-        return categoryRepo.findAll();
-    }
+/*
 
 
-    public Category getById(long id){
-        Optional<Category> category = categoryRepo.findById(id);
-        if (category.isPresent()) {
-            return category.get();
+    public Category getById(long id) {
+        RestTemplate template = new RestTemplate();
+
+        Map response = template.getForObject(categoryApi + id, Map.class);
+        List<Map> categories = (List<Map>) response.get("programcategories");
+
+        if (categories == null) return null;
+
+        List<Category> categories1 = new ArrayList<>();
+
+        for (Map category : categories) {
+            Map programCategory = (Map) category.get("programcategory");
+
+            Category category1 = new Category(
+                    (long) programCategory.get("id"),
+                    (String) programCategory.get("name")
+            );
+
+            categories1.add(category1);
         }
-        return null;
+        return (Category) categories1;
     }
 
 }
+/*
+
+            );
+
+            programs.add(program1);
+
+        }
+
+        return programs
+    }
+    */
