@@ -8,6 +8,7 @@ public class RadioappApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RadioappApplication.class, args);
+
 	}
 
 }

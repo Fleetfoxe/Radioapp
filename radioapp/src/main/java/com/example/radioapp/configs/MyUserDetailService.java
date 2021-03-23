@@ -9,9 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import javax.annotation.PostConstruct;
-
-
 
 
 @Configuration
@@ -23,6 +20,7 @@ public class MyUserDetailService implements UserDetailsService {
 
     @Autowired
     private UserRepo userRepo;
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -43,6 +41,7 @@ public class MyUserDetailService implements UserDetailsService {
         }
         return null;
     }
+
 
 
 

@@ -31,5 +31,20 @@ public class UserController {
         return userService.whoAmI();
     }
 
+    @GetMapping("/rest/users/{id}")
+    public User getUserById(@PathVariable long id){
+        return userService.getById(id);
+    }
+
+    @PutMapping("/api/add-friend")
+    public User addFriend(@RequestBody User friend){
+
+    return userService.addFriend(friend);
+    }
+    @PutMapping("/api/deleteFriend")
+    public void removeFriend(@RequestBody User friend){
+
+        userService.deleteFriend(friend);
+    }
 
 }
