@@ -20,14 +20,16 @@ public class ProgramController {
     public List<Program> getProgramsByCategoryById(@PathVariable long id) {
         return programService.getAllProgramNamesFromSrById(id);
     }
+
     @GetMapping("/rest/sr/programs")
     public List<Program> getAllProgramsFromSR() {
         return programService.getAllProgramFromSr();
     }
-   // @GetMapping("/rest/sr/program/{name}")
-   // public Program findProgram(@PathVariable String name) {
-    //    return programService.findProgrambyName(name);
-}
+
+    @GetMapping("/rest/sr/program/{name}")
+    public List<Program> findProgram(@PathVariable String name) {
+        return programService.getProgramFromSr(name);
+    }
 
 
 /*
@@ -35,3 +37,4 @@ public class ProgramController {
     public Category getCategoryById(@PathVariable long id){
         return categoryService.getById(id);
     }*/
+}
