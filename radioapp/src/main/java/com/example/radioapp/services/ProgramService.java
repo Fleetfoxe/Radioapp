@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class ProgramService {
@@ -131,7 +129,7 @@ public class ProgramService {
             String programName = (String) program.get("name");
             int programId = 0;
 
-            if (programName.equalsIgnoreCase(pName)) {
+            if (programName.contains(pName)) {
                 //LIFEHACK
                 if (programCategory != null) {
                     programId = (int) programCategory.get("id");
@@ -145,9 +143,9 @@ public class ProgramService {
                         (String) program.get("programimage"),
                         programId,
                         (int) program.get("id"),
-                        (String) program.get("name"),
+                        programName,
                         (int) channelInfo.get("id"),
-                        programName
+                        (String) channelInfo.get("name")
                 );
 
                 programs.add(program1);
@@ -157,4 +155,46 @@ public class ProgramService {
 
         return programs;
     }
+
+    private String allProgramOnChannelApi="http://api.sr.se/api/v2/programs/index?format=json&channelid=";
+
+    public List<Program> getProgramsOnChannel(long id) {
+        RestTemplate template = new RestTemplate();
+
+        Map response = template.getForObject(allProgramOnChannelApi+id, Map.class);
+
+        List<Map> programMaps = (List<Map>)response.get("programs");
+
+
+        if(programMaps==null) return null;
+
+        List<Program> programs = new ArrayList<>();
+
+        for (Map program : programMaps) {
+
+            Map programCategory = (Map) program.get("programcategory");
+            int programId = 0;
+            //LIFEHACK
+            if (programCategory != null) { programId = (int) programCategory.get("id"); }
+
+            Map channelInfo = (Map) program.get("channel");
+
+            Program program1 = new Program(
+                    (String) program.get("description"),
+                    (String) program.get("programurl"),
+                    (String) program.get("programimage"),
+                    programId,
+                    (int) program.get("id"),
+                    (String) program.get("name"),
+                    (int) channelInfo.get("id"),
+                    (String) channelInfo.get("name")
+            );
+
+            programs.add(program1);
+        }
+
+        return programs;
+    }
+
+
 }
