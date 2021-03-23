@@ -1,7 +1,9 @@
 package com.example.radioapp.services;
 
 import com.example.radioapp.configs.MyUserDetailService;
+import com.example.radioapp.entities.Favorite;
 import com.example.radioapp.entities.User;
+import com.example.radioapp.repositories.FavoriteRepo;
 import com.example.radioapp.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +19,8 @@ public class UserService {
     private MyUserDetailService detailService;
     @Autowired
     private UserRepo userRepo;
+    @Autowired
+    private FavoriteRepo favoriteRepo;
 
 
     public User register(User user){
@@ -46,6 +50,9 @@ public class UserService {
         return null;
     }
 
+    public List<Favorite> getAllFavorites() {
+        return favoriteRepo.findAll();
+    }
 
     public User addFriend(User friend) {
         User user = whoAmI();//get logged in user
@@ -67,6 +74,21 @@ public class UserService {
             return userRepo.save(user);
         }
         //user is not logged in
+        return null;
+    }
+
+    public Favorite addFavorite(Favorite favorite) {
+        User user = whoAmI();
+
+        //if Logged in
+        if (user != null) {
+            favorite.setUser(user);
+            //If the favorite episode doesn't already exist
+                //if ((!favoriteRepo.existsFavoriteByEpisodeId(favorite.getEpisodeId()))||!favoriteRepo
+                // .existsFavoriteByProgramId(favorite.getProgramId())) {
+                return favoriteRepo.save(favorite);
+                //}
+        }
         return null;
     }
 }

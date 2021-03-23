@@ -1,6 +1,8 @@
 package com.example.radioapp.controllers;
 
+import com.example.radioapp.entities.Favorite;
 import com.example.radioapp.entities.User;
+import com.example.radioapp.services.FavoriteService;
 import com.example.radioapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,6 +15,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private FavoriteService favoriteService;
 
     @PostMapping("/auth/register")
     public User register(@RequestBody User user){
@@ -35,6 +39,10 @@ public class UserController {
     public User getUserById(@PathVariable long id){
         return userService.getById(id);
     }
+    @GetMapping("/rest/favorites")
+    public List<Favorite> getAllFavorites() {
+        return userService.getAllFavorites();
+    }
 
     @PutMapping("/api/add-friend")
     public User addFriend(@RequestBody User friend){
@@ -47,4 +55,8 @@ public class UserController {
         userService.deleteFriend(friend);
     }
 
+    @PostMapping("/rest/favorites/add-favorite")
+    public Favorite addFavorite(@RequestBody Favorite favorite) {
+        return userService.addFavorite(favorite);
+    }
 }

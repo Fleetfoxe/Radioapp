@@ -34,6 +34,19 @@ public class User {
     public void addFriend(User user){
 
         friends.add(user);
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Favorite> favorites;
+
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
+    }
+
+    public String getName() {
+        return name;
     }
     public void deleteFriend(User friend){
         friends.removeIf(userFriend -> userFriend.getId() == friend.getId());//fungerar inte med vanlig loop måste fuska
