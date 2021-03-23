@@ -40,7 +40,7 @@ public class UserController {
         return userService.getAllFavorites();
     }
 
-    @PutMapping("/rest/favorites/add-favorite")
+    @PostMapping("/rest/favorites/add-favorite")
     public Favorite addFavorite(@RequestBody Favorite favorite) {
         return userService.addFavorite(favorite);
     }
