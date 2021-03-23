@@ -6,40 +6,42 @@ import javax.persistence.*;
 public class Program {
 
     @Id
-    private String description;
-    private String programurl;
-    private String programimage;
+    private int channelid;
+    private String channelname;
     private int programcategory;
     private int id;
     private String name;
-    private int channelid;
-    private String channelname;
+    private String description;
+    private String programurl;
+    private String programimage;
 
     //Test constructor
 
 
-    public Program(String description, String programurl, String programimage, int id, String name, int channelid, String channelname) {
-        this.description = description;
-        this.programurl = programurl;
-        this.programimage = programimage;
-        this.id = id;
-        this.name = name;
+    public Program(int channelid, String channelname, int programcategory, int id, String name, String description, String programurl, String programimage) {
         this.channelid = channelid;
         this.channelname = channelname;
-    }
-
-    public Program(String description, String programurl, String programimage, int programcategory, int id, String name, int channelid, String channelname) {
-        this.description = description;
-        this.programurl = programurl;
-        this.programimage = programimage;
         this.programcategory = programcategory;
         this.id = id;
         this.name = name;
-        this.channelid = channelid;
-        this.channelname = channelname;
-
+        this.description = description;
+        this.programurl = programurl;
+        this.programimage = programimage;
     }
 
+    /*
+        public Program(String description, String programurl, String programimage, int programcategory, int id, String name, int channelid, String channelname) {
+            this.description = description;
+            this.programurl = programurl;
+            this.programimage = programimage;
+            this.programcategory = programcategory;
+            this.id = id;
+            this.name = name;
+            this.channelid = channelid;
+            this.channelname = channelname;
+
+        }
+    */
     public Program() {
     }
 
