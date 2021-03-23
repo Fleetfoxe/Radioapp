@@ -15,6 +15,7 @@ public class EpisodeService {
     @Autowired
     private EpisodeRepo episodeRepo;
     private String episodeApi = "http://api.sr.se/api/v2/episodes/index?format=json&programid=";
+    private String episodeApiChannels = "http://api.sr.se/api/v2/scheduledepisodes?format=json&channelid=";
 
     public List<Episode> getEpisodeByProgramIdFromSR(String programId) {
         RestTemplate template = new RestTemplate();
@@ -32,9 +33,8 @@ public class EpisodeService {
             // id, title, starttimeutc, endtimeutc, program, channel, imageurl
 
             Map broadcastTime=(Map) episode.get("broadcasttime");
-            System.out.println((String)broadcastTime.get("starttimeutc"));
             Episode episode1= new Episode(
-                    (long) (int) episode.get("id"),
+                    (int) episode.get("id"),
                     (String)episode.get("title"),
                     (String)broadcastTime.get("starttimeutc"),
                     (String)broadcastTime.get("endtimeutc"),
@@ -52,7 +52,38 @@ public class EpisodeService {
         return episodes;
 
     }
+    public List<Episode> getEpisodesOnChannelId(String channelId,String channelDate){
+        RestTemplate template = new RestTemplate();
+
+        Map response = template.getForObject(episodeApiChannels + channelId +"&date="+ channelDate,Map.class);
+
+        List<Map> episodeMaps = (List<Map>)response.get("schedule");
+        if(episodeMaps==null) return null;
+        System.out.println(episodeMaps);
+        List<Episode> episodes = new ArrayList<>();
+
+        for(Map episode: episodeMaps){
+            if(episode.get("episodeid")!=null){
+
+                Episode episode1 = new Episode(
+
+                        (long) (int) episode.get("episodeid"),
+                        (String) episode.get("title"),
+                        (String) episode.get("starttimeutc"),
+                        (String) episode.get("endtimeutc"),
+                        //(int) episode.get("channelid"),
+                        (String) episode.get("imageurl")
+
+                );
+            System.out.println(episode1);
+            episodes.add(episode1);
+        }
+            };
+
+        System.out.println(episodes);
+        return episodes;
 
 
+    }
 
 }

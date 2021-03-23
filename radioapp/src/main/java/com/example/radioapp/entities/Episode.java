@@ -8,23 +8,41 @@ import javax.persistence.Id;
 public class Episode {
 
    @Id
-   private long id;
+   private long episodeid;
    private String title;
-   private String starttimeutc;
-   private String endtimeutc;
+   private String StartTimeUtc;
+   private String endTimeUtc;
   // private String program;
-   private int channelid;
-   private String imageurl;
+   private String ChanId;
+   private String imageUrl;
 
     public Episode() {
     }
 
-    public Episode(long id, String title, String starttimeutc, String endtimeutc, String imageurl) {
-        this.id = id;
+    public Episode(long episodeid, String title, String startTimeUtc, String endTimeUtc, String imageUrl) {
+        this.episodeid = episodeid;
         this.title = title;
-        this.starttimeutc = starttimeutc;
-        this.endtimeutc = endtimeutc;
-        this.imageurl = imageurl;
+        this.StartTimeUtc = startTimeUtc;
+        this.endTimeUtc = endTimeUtc;
+        this.imageUrl = imageUrl;
+    }
+
+    public Episode(String title, String startTimeUtc) {
+        this.title = title;
+        StartTimeUtc = startTimeUtc;
+    }
+
+    public Episode(String title, String startTimeUtc, String endTimeUtc) {
+        this.title = title;
+        StartTimeUtc = startTimeUtc;
+        this.endTimeUtc = endTimeUtc;
+    }
+
+    public Episode(String title, String startTimeUtc, String endTimeUtc, String imageUrl) {
+        this.title = title;
+        StartTimeUtc = startTimeUtc;
+        this.endTimeUtc = endTimeUtc;
+        this.imageUrl = imageUrl;
     }
 
     public Episode(String title) {
@@ -41,34 +59,34 @@ public class Episode {
         this.imageurl = imageurl;
     }*/
 
-    public Episode(long id, String title, String starttimeutc, String endtimeutc, int channelid, String imageurl) {
-        this.id = id;
+    public Episode(long episodeid, String title, String starttimeutc, String endtimeutc, String ChanId, String imageUrl) {
+        this.episodeid = episodeid;
         this.title = title;
-        this.starttimeutc = starttimeutc;
-        this.endtimeutc = endtimeutc;
-        this.channelid = channelid;
-        this.imageurl = imageurl;
+        this.StartTimeUtc = starttimeutc;
+        this.endTimeUtc = endtimeutc;
+        //this.ChanId = ChanId;
+        this.imageUrl = imageUrl;
     }
 
     @Override
     public String toString() {
         return "Episode{" +
-                "id=" + id +
+                "id=" + episodeid +
                 ", title='" + title + '\'' +
-                ", starttimeutc='" + starttimeutc + '\'' +
-                ", endtimeutc='" + endtimeutc + '\'' +
+                ", starttimeutc='" + StartTimeUtc + '\'' +
+                ", endtimeutc='" + endTimeUtc + '\'' +
                 //", program='" + program + '\'' +
-                ", channel id='" + channelid + '\'' +
-                ", imageurl='" + imageurl + '\'' +
+                ", channel id='" + //ChanId + '\'' +
+                ", imageurl='" + imageUrl + '\'' +
                 '}';
     }
 
-    public long getId() {
-        return id;
+    public long getEpisodeid() {
+        return episodeid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setEpisodeid(long episodeid) {
+        this.episodeid = episodeid;
     }
 
     public String getTitle() {
@@ -79,20 +97,20 @@ public class Episode {
         this.title = title;
     }
 
-    public String getStarttimeutc() {
-        return starttimeutc;
+    public String getStartTimeUtc() {
+        return StartTimeUtc;
     }
 
-    public void setStarttimeutc(String starttimeutc) {
-        this.starttimeutc = starttimeutc;
+    public void setStartTimeUtc(String startTimeUtc) {
+        this.StartTimeUtc = startTimeUtc;
     }
 
-    public String getEndtimeutc() {
-        return endtimeutc;
+    public String getEndTimeUtc() {
+        return endTimeUtc;
     }
 
-    public void setEndtimeutc(String endtimeutc) {
-        this.endtimeutc = endtimeutc;
+    public void setEndTimeUtc(String endTimeUtc) {
+        this.endTimeUtc = endTimeUtc;
     }
 
   /*  public String getProgram() {
@@ -103,19 +121,23 @@ public class Episode {
         this.program = program;
     }*/
 
-    public int getChannelid() {
-        return channelid;
+    /*public String getChanId() {
+        return ChanId;
     }
 
-    public void setChannelid(int channelid) {
-        this.channelid = channelid;
+     */
+
+    /*public void setChanId(String chanId) {
+        this.ChanId = chanId;
     }
 
-    public String getImageurl() {
-        return imageurl;
+     */
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageurl(String imageurl) {
-        this.imageurl = imageurl;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
