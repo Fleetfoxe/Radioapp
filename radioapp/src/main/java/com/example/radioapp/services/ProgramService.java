@@ -145,9 +145,55 @@ public class ProgramService {
                         (String) program.get("programimage"),
                         programId,
                         (int) program.get("id"),
-                        (String) program.get("name"),
+                        programName,
                         (int) channelInfo.get("id"),
-                        programName
+                        (String) channelInfo.get("name")
+                );
+
+                programs.add(program1);
+            }
+
+        }
+
+        return programs;
+    }
+
+
+    public List<Program> getProgramsByChannel(String channelName) {
+        RestTemplate template = new RestTemplate();
+
+        Map response = template.getForObject(allProgramApi, Map.class);
+
+        List<Map> programMaps = (List<Map>)response.get("programs");
+
+
+        if(programMaps==null) return null;
+
+        List<Program> programs = new ArrayList<>();
+
+        for (Map program : programMaps) {
+
+            Map programCategory = (Map) program.get("programcategory");
+            Map channelInfo = (Map) program.get("channel");
+            String programName = (String) program.get("name");
+            String cName=(String) channelInfo.get("name");
+            int programId = 0;
+
+            if (cName.equalsIgnoreCase(channelName)) {
+                //LIFEHACK
+                if (programCategory != null) {
+                    programId = (int) programCategory.get("id");
+                }
+
+                         Program program1 = new Program(
+                        (String) program.get("description"),
+                        (String) program.get("programurl"),
+                        (String) program.get("programimage"),
+                        programId,
+                        (int) program.get("id"),
+                        programName,
+                        (int) channelInfo.get("id"),
+                        cName
                 );
 
                 programs.add(program1);
