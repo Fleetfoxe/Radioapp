@@ -67,7 +67,7 @@ public class ProgramService {
 
 
 
-    private String allProgramApi = "http://api.sr.se/api/v2/programs?format=json&indent=false&size=25&page=4";
+    private String allProgramApi = "http://api.sr.se/api/v2/programs?format=json&indent=false&size=25&page=10";
 
     public List<Program> getAllProgramFromSr() {
         RestTemplate template = new RestTemplate();
@@ -140,7 +140,7 @@ public class ProgramService {
                 Program program1 = new Program(
                         (int) channelInfo.get("id"),
                         (String) channelInfo.get("name"),
-                        catId,
+                        catId,  //can be null - because of that we take it out and put it to 0
                         (int) program.get("id"),
                         programName,
                         (String)program.get("description"),
