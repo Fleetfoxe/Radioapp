@@ -17,16 +17,6 @@ public class ChannelService {
 
     private String channelApi = "http://api.sr.se/api/v2/channels?format=json";
 
-    public List<Channel> getAllChannelsFromSR() {
-        RestTemplate template = new RestTemplate();
-
-        Map response = template.getForObject(channelApi, Map.class);
-
-        List<Channel> channels = (List<Channel>) response.get("channels");
-
-        return channels;
-    }
-
     public List<Channel> getChannelsCleaned() {
         RestTemplate template = new RestTemplate();
 

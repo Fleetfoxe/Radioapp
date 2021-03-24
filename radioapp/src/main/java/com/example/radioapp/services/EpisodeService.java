@@ -52,9 +52,11 @@ public class EpisodeService {
         return episodes;
 
     }
+    //Send two inputs in the parameters otherwise the same
     public List<Episode> getEpisodesOnChannelId(String channelId,String channelDate){
         RestTemplate template = new RestTemplate();
 
+        //"&date=" ---> modify API to get return requested data
         Map response = template.getForObject(episodeApiChannels + channelId +"&date="+ channelDate,Map.class);
 
         List<Map> episodeMaps = (List<Map>)response.get("schedule");
@@ -63,6 +65,7 @@ public class EpisodeService {
         List<Episode> episodes = new ArrayList<>();
 
         for(Map episode: episodeMaps){
+            //If episodeId is missing = we don´t get it
             if(episode.get("episodeid")!=null){
 
                 Episode episode1 = new Episode(
@@ -71,7 +74,6 @@ public class EpisodeService {
                         (String) episode.get("title"),
                         (String) episode.get("starttimeutc"),
                         (String) episode.get("endtimeutc"),
-                        //(int) episode.get("channelid"),
                         (String) episode.get("imageurl")
 
                 );
