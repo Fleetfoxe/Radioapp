@@ -21,11 +21,5 @@ public class CategoryController {
         return categoryService.getAllCategoriesFromSr();
     }
 
-
-   // @GetMapping("/rest/categories/{id}")
-   // public Category getCategoryById(@PathVariable long id){
-   //     return categoryService.getById(id);
-   // }
-
 }
 

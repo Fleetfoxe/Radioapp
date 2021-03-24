@@ -36,8 +36,6 @@ public class ProgramService {
 
         Map response = template.getForObject(programApi + id, Map.class);
 
-        //List<Program> programs = (List<Program>) response.get("programs");
-
         List<Map> programMaps = (List<Map>)response.get("programs");
 
         if(programMaps==null) return null;
@@ -76,8 +74,6 @@ public class ProgramService {
 
         Map response = template.getForObject(allProgramApi, Map.class);
 
-        //List<Program> programs = (List<Program>) response.get("programs");
-
         List<Map> programMaps = (List<Map>)response.get("programs");
 
         if(programMaps==null) return null;
@@ -89,24 +85,21 @@ public class ProgramService {
             Map programCategory = (Map) program.get("programcategory");
 
             //LIFEHACK
-            int programId = 0;
+            int catId = 0;
             if (programCategory != null){
-                programId = (int) programCategory.get("id");
+                catId = (int) programCategory.get("id");
             }
             Map channelInfo = (Map) program.get("channel");
-            //List<Long> idSr = (List<Long>) programCategory.get("id");
-            //List<String> nameSr = (List<String>) programCategory.get("name");
 
             Program program1 = new Program(
                     (int) channelInfo.get("id"),
                     (String) channelInfo.get("name"),
-                    programId,
+                    catId,
                     (int) program.get("id"),
                     (String)program.get("name"),
                     (String)program.get("description"),
                     (String)program.get("programurl"),
                     (String)program.get("programimage")
-                    //nameSr.get(1),
             );
 
             programs.add(program1);
@@ -116,7 +109,7 @@ public class ProgramService {
         return programs;
     }
 
-
+// USER STORY 6 AND 7
     public List<Program> getProgramFromSr(String pName) {
         RestTemplate template = new RestTemplate();
 
@@ -132,26 +125,27 @@ public class ProgramService {
         for (Map program : programMaps) {
 
             Map programCategory = (Map) program.get("programcategory");
+
             String programName = (String) program.get("name");
-            int programId = 0;
+            int catId = 0;
 
             if (programName.contains(pName)) {
-                //LIFEHACK
+                //LIFEHACK -if there is no category programId=0
                 if (programCategory != null) {
-                    programId = (int) programCategory.get("id");
+                    catId = (int) programCategory.get("id");
                 }
 
                 Map channelInfo = (Map) program.get("channel");
 
                 Program program1 = new Program(
+                        (int) channelInfo.get("id"),
+                        (String) channelInfo.get("name"),
+                        catId,
                         (int) program.get("id"),
                         programName,
-                        programId,
-                        (int) channelInfo.get("id"),
-                        (String) program.get("description"),
-                        (String) channelInfo.get("name"),
-                        (String) program.get("programurl"),
-                        (String) program.get("programimage")
+                        (String)program.get("description"),
+                        (String)program.get("programurl"),
+                        (String)program.get("programimage")
                 );
 
                 programs.add(program1);
@@ -179,16 +173,16 @@ public class ProgramService {
         for (Map program : programMaps) {
 
             Map programCategory = (Map) program.get("programcategory");
-            int programId = 0;
+            int catId = 0;
             //LIFEHACK
-            if (programCategory != null) { programId = (int) programCategory.get("id"); }
+            if (programCategory != null) { catId = (int) programCategory.get("id"); }
 
             Map channelInfo = (Map) program.get("channel");
 
             Program program1 = new Program(
                     (int) channelInfo.get("id"),
                     (String) channelInfo.get("name"),
-                    programId,
+                    catId,
                     (int) program.get("id"),
                     (String) program.get("name"),
                     (String) program.get("description"),
