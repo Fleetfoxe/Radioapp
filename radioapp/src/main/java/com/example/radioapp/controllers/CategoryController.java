@@ -14,21 +14,18 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    //@GetMapping("/rest/categories")
-    //public List<Category>getAllCategories(){
-       // return categoryService.getAll();
-   // }
-
-    @GetMapping("/rest/categories/{id}")
-    public Category getCategoryById(@PathVariable long id){
-        return categoryService.getById(id);
-    }
 
 
-    @GetMapping("/rest/sr/categories")
+    @GetMapping("/rest/categories")
     public List<Category> getAllCategoriesApi() {
         return categoryService.getAllCategoriesFromSr();
     }
+
+
+   // @GetMapping("/rest/categories/{id}")
+   // public Category getCategoryById(@PathVariable long id){
+   //     return categoryService.getById(id);
+   // }
 
 }
 

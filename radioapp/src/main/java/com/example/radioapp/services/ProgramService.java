@@ -43,14 +43,14 @@ public class ProgramService {
             //List<String> nameSr = (List<String>) programCategory.get("name");
 
             Program program1 = new Program(
-                    (String)program.get("description"),
-                    (String)program.get("programurl"),
-                    (String)program.get("programimage"),
+                    (int) channelInfo.get("id"),
+                    (String) channelInfo.get("name"),
                     (int) programCategory.get("id"),
                     (int) program.get("id"),
                     (String)program.get("name"),
-                    (int) channelInfo.get("id"),
-                    (String) channelInfo.get("name")
+                    (String)program.get("description"),
+                    (String)program.get("programurl"),
+                    (String)program.get("programimage")
                     //nameSr.get(1),
             );
 
@@ -92,14 +92,14 @@ public class ProgramService {
             //List<String> nameSr = (List<String>) programCategory.get("name");
 
             Program program1 = new Program(
-                    (String)program.get("description"),
-                    (String)program.get("programurl"),
-                    (String)program.get("programimage"),
+                    (int) channelInfo.get("id"),
+                    (String) channelInfo.get("name"),
                     programId,
                     (int) program.get("id"),
                     (String)program.get("name"),
-                    (int) channelInfo.get("id"),
-                    (String) channelInfo.get("name")
+                    (String)program.get("description"),
+                    (String)program.get("programurl"),
+                    (String)program.get("programimage")
                     //nameSr.get(1),
             );
 
@@ -138,14 +138,14 @@ public class ProgramService {
                 Map channelInfo = (Map) program.get("channel");
 
                 Program program1 = new Program(
-                        (String) program.get("description"),
-                        (String) program.get("programurl"),
-                        (String) program.get("programimage"),
-                        programId,
                         (int) program.get("id"),
                         programName,
+                        programId,
                         (int) channelInfo.get("id"),
-                        (String) channelInfo.get("name")
+                        (String) program.get("description"),
+                        (String) channelInfo.get("name"),
+                        (String) program.get("programurl"),
+                        (String) program.get("programimage")
                 );
 
                 programs.add(program1);
@@ -180,14 +180,14 @@ public class ProgramService {
             Map channelInfo = (Map) program.get("channel");
 
             Program program1 = new Program(
-                    (String) program.get("description"),
-                    (String) program.get("programurl"),
-                    (String) program.get("programimage"),
+                    (int) channelInfo.get("id"),
+                    (String) channelInfo.get("name"),
                     programId,
                     (int) program.get("id"),
                     (String) program.get("name"),
-                    (int) channelInfo.get("id"),
-                    (String) channelInfo.get("name")
+                    (String) program.get("description"),
+                    (String) program.get("programurl"),
+                    (String) program.get("programimage")
             );
 
             programs.add(program1);
