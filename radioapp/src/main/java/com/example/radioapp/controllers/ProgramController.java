@@ -16,23 +16,23 @@ public class ProgramController {
     @Autowired
     private ProgramService programService;
 
-    @GetMapping("/rest/sr/categories/program/{id}")
+    @GetMapping("/rest/programs/category/{id}")
     public List<Program> getProgramsByCategoryById(@PathVariable long id) {
         return programService.getAllProgramNamesFromSrById(id);
     }
 
-    @GetMapping("/rest/sr/programs")
+    @GetMapping("/rest/programs")
     public List<Program> getAllProgramsFromSR() {
         return programService.getAllProgramFromSr();
     }
 
-    @GetMapping("/rest/sr/program/{name}")
+    @GetMapping("/rest/programs/{name}")
     public List<Program> findProgram(@PathVariable String name) {
         return programService.getProgramFromSr(name);
     }
 
     //All program on a channel with name
-    @GetMapping("/rest/sr/channel/{id}")
+    @GetMapping("/rest/programs/channel/{id}")
     public List<Program> getProgramsOnChannel(@PathVariable long id) {
         return programService.getProgramsOnChannel(id);
     }

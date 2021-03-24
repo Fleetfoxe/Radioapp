@@ -19,6 +19,14 @@ public class CategoryService {
     @Autowired
     private CategoryRepo categoryRepo;
 
+    //----------------------------------------------------------------------------------------------
+    // 1. create a string variable and insert the API address to access it.
+    // 2. create a method that will return a list of the given class.
+    // 3. Create a RestTemplate object to handle objects/data from given API.
+    // 4. Map? use template method to get objects from the given API.
+    // 5. ??? ---> Point at "programcategories" in the given API
+    // 6. return Listed and Converted data from API.
+
     private String categoryApi = "http://api.sr.se/api/v2/programcategories?format=json";
 
     public List<Category> getAllCategoriesFromSr() {

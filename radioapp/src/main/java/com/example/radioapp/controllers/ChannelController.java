@@ -18,12 +18,12 @@ public class ChannelController {
         return channelService.getAll();
     }
 
-    @GetMapping("/rest/sr/channels")
+    @GetMapping("/rest/channels")
     public List<Channel> getAllChannelsSR() {
         return channelService.getAllChannelsFromSR();
     }
 
-    @GetMapping("/rest/sr/channelscleaned")
+    @GetMapping("/rest/channelscleaned")
     public List<Channel> getAllChannelsSRcleaned() {
         return channelService.getChannelsCleaned();
     }

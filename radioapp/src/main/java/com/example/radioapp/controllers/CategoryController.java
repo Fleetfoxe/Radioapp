@@ -16,11 +16,11 @@ public class CategoryController {
 
 
 
-    @GetMapping("/rest/sr/categories")
+    @GetMapping("/rest/categories")
     public List<Category> getAllCategoriesApi() {
         return categoryService.getAllCategoriesFromSr();
     }
-    
+
 
    // @GetMapping("/rest/categories/{id}")
    // public Category getCategoryById(@PathVariable long id){

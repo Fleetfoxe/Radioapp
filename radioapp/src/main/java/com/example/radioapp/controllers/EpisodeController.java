@@ -21,7 +21,7 @@ public class EpisodeController {
     public List<Episode> getById(@PathVariable String programId) {
         return episodeService.getEpisodeByProgramIdFromSR(programId);
     }
-    @RequestMapping("rest/channelEpisodes/{channelId}/{channelDate}")
+    @RequestMapping("rest/episodes/{channelId}/{channelDate}")       //COMMENT
     public List<Episode> getByChannel(@PathVariable String channelId,@PathVariable String channelDate){
 
         return episodeService.getEpisodesOnChannelId(channelId,channelDate);
