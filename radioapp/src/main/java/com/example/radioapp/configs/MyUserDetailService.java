@@ -22,7 +22,7 @@ public class MyUserDetailService implements UserDetailsService {
     private UserRepo userRepo;
 
 
-    @Override
+    @Override   //finds the logged in user on there email(user name)
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         User user = userRepo.findByEmail(email);
@@ -31,6 +31,7 @@ public class MyUserDetailService implements UserDetailsService {
         }
         return toUserDetails(user);
     }
+    //register user and encrypts the password(so remember password
 
     public User registerUser(User user){
         user.setPassword(encoder.encode(user.getPassword()));

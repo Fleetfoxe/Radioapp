@@ -27,34 +27,25 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "friend") // the friend column(inverse is always the "second" column)
 
     )
-    @JsonIgnoreProperties("")//ignore a property from the related entity
+    @JsonIgnoreProperties({"friends","favorites"})//ignore a property from the related entity
     private List<User> friends;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Favorite> favorites;
 
+    //add friend method
     public void addFriend(User user) {
 
         friends.add(user);
 
         }
-        public List<Favorite> getFavorites () {
-            return favorites;
-        }
-
-        public void setFavorites (List < Favorite > favorites) {
-            this.favorites = favorites;
-
-        }
-        public String getName () {
-            return name;
-
-        }
+        //remove friend method
         public void deleteFriend (User friend){
-            friends.removeIf(userFriend -> userFriend.getId() == friend.getId());//fungerar inte med vanlig loop måste fuska
+            friends.removeIf(userFriend -> userFriend.getId() == friend.getId());//fungerar inte med vanlig loop spring magic
             //ingen vet varför
+        /*
 
-        /*for(User userFriend :friends){ samma sak som ovan men fungerar inte
+        for(User userFriend :friends){ samma sak som raden ovan
             if(userFriend.getId() ==friend.getId()){
 
                 friends.remove(userFriend);
@@ -64,7 +55,21 @@ public class User {
 
          */
 
+
+
     }
+        public List<Favorite> getFavorites () {
+            return favorites;
+        }
+
+        public void setFavorites (List <Favorite> favorites) {
+            this.favorites = favorites;
+
+        }
+        public String getName () {
+            return name;
+
+        }
     public User() {
         }
 
