@@ -43,39 +43,6 @@ public class CategoryService {
     }
 }
 
-/*  IFALL ---> SPARA TILL DB
-    public List<Category> getCategories() {
-
-        RestTemplate template = new RestTemplate();
-
-        Map response = template.getForObject(categoryApi, Map.class);
-
-        List<Map> categoryMaps = (List<Map>) response.get("sr");
-
-        if(categoryMaps == null) return null;
-
-        List<Category> categories = new ArrayList<>();
-
-        for(Map category : categoryMaps) {
-
-
-            Category categoryExtract = new Category(
-
-                    Long.valueOf((int)category.get("id")),
-                    (String)category.get("name")
-            );
-
-            categories.add(categoryExtract);
-
-
-        }
-
-
-        categories.forEach((n) -> categoryRepo.save(n));
-
-        return categories;
-    }
-*/
 /*
 
 

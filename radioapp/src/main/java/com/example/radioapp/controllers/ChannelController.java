@@ -14,11 +14,6 @@ public class ChannelController {
     private ChannelService channelService;
 
     @GetMapping("/rest/channels")
-    public List<Channel> getAllChannelsFromDB() {
-        return channelService.getAll();
-    }
-
-    @GetMapping("/rest/channels")
     public List<Channel> getAllChannelsSR() {
         return channelService.getAllChannelsFromSR();
     }
