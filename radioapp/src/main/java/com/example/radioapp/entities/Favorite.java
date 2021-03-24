@@ -7,11 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="favorites")
 public class Favorite {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
     private long episodeId;
     private long programId;
 
@@ -21,28 +17,18 @@ public class Favorite {
 
     public Favorite() {    }
 
-    public Favorite(long id, User user, long episodeId) {
-        this.id = id;
+    public Favorite(User user, long episodeId) {
         this.user = user;
         this.episodeId = episodeId;
     }
 
-    public Favorite(long id, long episodeId, long programId, User user) {
-        this.id = id;
+    public Favorite(long episodeId, long programId, User user) {
+
         this.episodeId = episodeId;
         this.programId = programId;
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "Favorite{" +
-                "id=" + id +
-                ", episodeId=" + episodeId +
-                ", programId=" + programId +
-                ", user=" + user +
-                '}';
-    }
 
     public long getProgramId() {
         return programId;
@@ -52,13 +38,6 @@ public class Favorite {
         this.programId = programId;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public User getUser() {
         return user;
@@ -74,5 +53,13 @@ public class Favorite {
 
     public void setEpisodeId(long episodeId) {
         this.episodeId = episodeId;
+    }
+    @Override
+    public String toString() {
+        return "Favorite{" +
+                ", episodeId=" + episodeId +
+                ", programId=" + programId +
+                ", user=" + user +
+                '}';
     }
 }
