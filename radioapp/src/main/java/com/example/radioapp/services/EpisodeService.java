@@ -14,8 +14,8 @@ import java.util.Map;
 public class EpisodeService {
     @Autowired
     private EpisodeRepo episodeRepo;
-    private String episodeApi = "http://api.sr.se/api/v2/episodes/index?format=json&programid=";
-    private String episodeApiChannels = "http://api.sr.se/api/v2/scheduledepisodes?format=json&channelid=";
+    private String episodeApi = "http://api.sr.se/api/v2/episodes/index?pagination=false&format=json&programid=";
+    private String episodeApiChannels = "http://api.sr.se/api/v2/scheduledepisodes?pagination=false&format=json&channelid=";
 
     public List<Episode> getEpisodeByProgramIdFromSR(String programId) {
         RestTemplate template = new RestTemplate();

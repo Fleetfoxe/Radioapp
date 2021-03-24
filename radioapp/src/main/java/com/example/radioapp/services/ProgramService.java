@@ -29,7 +29,7 @@ public class ProgramService {
     // 5. ??? ---> Point at "programcategories" in the given API
     // 6. return Listed and Converted data from API.
 
-    private String programApi = "http://api.sr.se/api/v2/programs/index?format=json&programcategoryid=";
+    private String programApi = "http://api.sr.se/api/v2/programs/?pagination=false&format=json&programcategoryid=";
 
     public List<Program> getAllProgramNamesFromSrById(long id) {
         RestTemplate template = new RestTemplate();
@@ -69,7 +69,7 @@ public class ProgramService {
 
 
 
-    private String allProgramApi = "http://api.sr.se/api/v2/programs?format=json&indent=false&size=25&page=4";
+    private String allProgramApi = "http://api.sr.se/api/v2/programs?pagination=false&format=json&indent=false&size=25&page=4";
 
     public List<Program> getAllProgramFromSr() {
         RestTemplate template = new RestTemplate();
@@ -162,7 +162,7 @@ public class ProgramService {
         return programs;
     }
 
-    private String allProgramOnChannelApi="http://api.sr.se/api/v2/programs/index?format=json&channelid=";
+    private String allProgramOnChannelApi="http://api.sr.se/api/v2/programs/index?pagination=false&format=json&channelid=";
 
     public List<Program> getProgramsOnChannel(long id) {
         RestTemplate template = new RestTemplate();
