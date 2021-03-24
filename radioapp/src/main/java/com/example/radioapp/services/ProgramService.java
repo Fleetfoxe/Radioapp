@@ -127,10 +127,10 @@ public class ProgramService {
             Map programCategory = (Map) program.get("programcategory");
 
             String programName = (String) program.get("name");
-            int catId = 0;
 
-            if (programName.contains(pName)) {
+            if (programName.equalsIgnoreCase(pName)) {
                 //LIFEHACK -if there is no category programId=0
+                int catId = 0;
                 if (programCategory != null) {
                     catId = (int) programCategory.get("id");
                 }
@@ -140,12 +140,13 @@ public class ProgramService {
                 Program program1 = new Program(
                         (int) channelInfo.get("id"),
                         (String) channelInfo.get("name"),
-                        catId,  //can be null - because of that we take it out and put it to 0
+                        catId,
                         (int) program.get("id"),
                         programName,
                         (String)program.get("description"),
                         (String)program.get("programurl"),
                         (String)program.get("programimage")
+
                 );
 
                 programs.add(program1);
