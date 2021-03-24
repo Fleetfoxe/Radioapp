@@ -13,16 +13,6 @@ public class ChannelController {
     @Autowired
     private ChannelService channelService;
 
-    @GetMapping("/rest/channels")
-    public List<Channel> getAllChannelsFromDB() {
-        return channelService.getAll();
-    }
-
-    @GetMapping("/rest/channels")
-    public List<Channel> getAllChannelsSR() {
-        return channelService.getAllChannelsFromSR();
-    }
-
     @GetMapping("/rest/channelscleaned")
     public List<Channel> getAllChannelsSRcleaned() {
         return channelService.getChannelsCleaned();

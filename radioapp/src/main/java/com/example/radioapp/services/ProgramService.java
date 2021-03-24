@@ -20,6 +20,15 @@ public class ProgramService {
 
     //http://api.sr.se/api/v2/programs/index?channelid=164&programcategoryid - get all the program names and what category
     // indent=false&size=25&page=4  -- to get all pages??
+
+    //----------------------------------------------------------------------------------------------
+    // 1. create a string variable and insert the API address to access it.
+    // 2. create a method that will return a list of the given class.
+    // 3. Create a RestTemplate object to handle objects/data from given API.
+    // 4. Map? use template method to get objects from the given API.
+    // 5. ??? ---> Point at "programcategories" in the given API
+    // 6. return Listed and Converted data from API.
+
     private String programApi = "http://api.sr.se/api/v2/programs/index?format=json&programcategoryid=";
 
     public List<Program> getAllProgramNamesFromSrById(long id) {
@@ -39,8 +48,6 @@ public class ProgramService {
 
             Map programCategory = (Map) program.get("programcategory");
             Map channelInfo = (Map) program.get("channel");
-            //List<Long> idSr = (List<Long>) programCategory.get("id");
-            //List<String> nameSr = (List<String>) programCategory.get("name");
 
             Program program1 = new Program(
                     (int) channelInfo.get("id"),
@@ -51,7 +58,6 @@ public class ProgramService {
                     (String)program.get("description"),
                     (String)program.get("programurl"),
                     (String)program.get("programimage")
-                    //nameSr.get(1),
             );
 
             programs.add(program1);
