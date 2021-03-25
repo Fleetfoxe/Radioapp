@@ -128,7 +128,7 @@ public class ProgramService {
 
             String programName = (String) program.get("name");
 
-            if (programName.equalsIgnoreCase(pName)) {
+            if (programName.contains(pName)) {
                 //LIFEHACK -if there is no category programId=0
                 int catId = 0;
                 if (programCategory != null) {
