@@ -30,10 +30,16 @@ export default createStore({
 
       categories: [
         {
-          name: "Komedi"
+          name: "Comedy"
         },
         {
           name: "Drama"
+        },
+        {
+          name: "Action"
+        },
+        {
+          name: "Documentary"
         }
       ],
 

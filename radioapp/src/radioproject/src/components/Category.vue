@@ -21,7 +21,7 @@ export default {
 
 <style scoped>
 
-.category-card {
+.category-list {
   background-color: lightgray;
   margin-bottom: 20px;
   padding: 10px;
@@ -30,13 +30,11 @@ export default {
   border: 5px solid whitesmoke;
 }
 
-.title {
+.name {
+
   font-size: 25px;
    text-shadow: 2px 2px #ffffff;
 }
 
-p {
-  color: black;
-}
 
 </style>
