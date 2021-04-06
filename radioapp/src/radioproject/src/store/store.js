@@ -27,6 +27,16 @@ export default createStore({
   
         }
       ],
+
+      categories: [
+        {
+          name: "Komedi"
+        },
+        {
+          name: "Drama"
+        }
+      ],
+
       programs: [
         {
           

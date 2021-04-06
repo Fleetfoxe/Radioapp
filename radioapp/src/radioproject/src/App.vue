@@ -1,5 +1,5 @@
 <template>
-<h1>Channel list</h1>
+<h1>RIX FM</h1>
 <Navbar />
 
 <router-view />

@@ -3,6 +3,9 @@
       <router-link to="/">Home</router-link>
       -
       <router-link to="/channellist">ChannelList</router-link>
+
+      -
+      <router-link to="/categoryList">CategoryList</router-link>
   </nav>
 </template>
 
