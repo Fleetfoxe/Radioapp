@@ -1,10 +1,22 @@
 <template>
   <h1>Categories</h1>
+  <h3>{{ getCategory }}</h3>
 </template>
 
 <script>
 export default {
+    name: 'Category',
 
+    computed: {
+        getCategory() {
+            return this.$store.getters.getCategory
+        }
+    },
+
+    // .dispatch() används när en påkallar en action:
+    mounted() {
+        this.$store.dispatch("fetchCategory");
+    }
 }
 </script>
 
