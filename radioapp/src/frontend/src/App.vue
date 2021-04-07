@@ -1,20 +1,16 @@
 <template>
-<h1>Channel list</h1>
-<Navbar />
-
-<router-view />
-
-
+  <div id="nav">
+    <Navbar />
+  </div>
+  <router-view/>
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
-
+import Navbar from "./components/Navbar"
 export default {
-  components: {
+  components:{
     Navbar
   }
-    
   
 }
 </script>
@@ -26,6 +22,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
