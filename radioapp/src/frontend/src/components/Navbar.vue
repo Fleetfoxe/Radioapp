@@ -5,6 +5,9 @@
       <router-link to="/channellist">ChannelList</router-link>
       -
       <router-link to="/categorylist">CategoryList</router-link>
+      -
+      <router-link to="/programlist">ProgramList</router-link>
+
   </nav>
 </template>
 

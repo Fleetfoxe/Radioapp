@@ -3,8 +3,10 @@ import axios from 'axios'
 
 export default createStore({
   state: {
-    category: []
-  },
+    searchQuery: "Arkivet",
+    category: [],
+    programs: [],
+    },
 
 
   // Metoder som används för att komma åt/manipulera datan.
@@ -12,6 +14,9 @@ export default createStore({
   mutations: {
     setCategory(state, payload){
       state.category = payload;
+    },
+    setProgram(state, payload) {
+      state.programs = payload;
     }
   },
 
@@ -24,6 +29,15 @@ export default createStore({
        this.commit("setCategory", response.data) 
        console.log(response.data)
       })
+    },
+    async fetchPrograms() {
+      //searchQuery = this.getSearchQuery()
+      let url ="http://localhost:3001/rest/programs"
+      await axios.get(url)
+      .then(response => {
+       this.commit("setProgram", response.data) 
+       console.log(response.data)
+      })
     }
   },
 
@@ -31,6 +45,12 @@ export default createStore({
   getters: {
     getCategory(state){
       return state.category
+    },
+    getPrograms(state){
+      return state.programs
+    },
+    getSearchQuery(state) {
+      return state.searchQuery
     }
   },
 
