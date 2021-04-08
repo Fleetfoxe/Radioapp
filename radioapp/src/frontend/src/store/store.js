@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export default createStore({
   state: {
-    category: []
+    categories: []
   },
 
 
@@ -11,7 +11,7 @@ export default createStore({
   // Påkallas med commit
   mutations: {
     setCategory(state, payload){
-      state.category = payload;
+      state.categories = payload;
     }
   },
 

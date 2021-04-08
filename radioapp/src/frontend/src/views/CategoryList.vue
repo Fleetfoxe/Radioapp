@@ -1,11 +1,25 @@
 <template>
   <h1>Categories</h1>
-  <h3>{{ getCategory }}</h3>
+  <div class="category-list">
+        <div>
+            <CategoryCard
+                v-for="(category, i) in categories"
+                :key="i"
+                :category="category"
+            />
+        </div>
+    </div> 
 </template>
 
 <script>
+import CategoryCard from "../components/CategoryCard"
+
 export default {
     name: 'Category',
+    components: {
+        CategoryCard, 
+        
+    },
 
     computed: {
         getCategory() {

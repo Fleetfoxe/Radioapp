@@ -1,24 +1,23 @@
+
 <template>
-
-
-    <div class="category-list wrapper">
-        <span class="name">{{ listCategories }}</span>
-        <br>
+    <div class="category-list">
+        <span>Id: {{ category.id }} - {{ category.name }}</span>
     </div>
 </template>
+
 
 <script>
 export default {
     props: ["category"],
+
     methods: {
-        listCategories() {
-            this.$router.push({ path: '/categoryList' });
-        }
+        
     }
-};
+    
+}
 </script>
 
-<!---
+
 <style scoped>
 
 .category-list {
@@ -30,11 +29,6 @@ export default {
   border: 5px solid whitesmoke;
 }
 
-.name {
-
-  font-size: 25px;
-   text-shadow: 2px 2px #ffffff;
-}
 
 
-</style> --->
+</style>
