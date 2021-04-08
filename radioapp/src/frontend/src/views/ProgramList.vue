@@ -20,7 +20,7 @@ export default {
 
   computed: {
     programs() {
-            console.log(this.getPrograms);
+            console.log(this.programs);
             return this.$store.getters.getPrograms
         },
     
