@@ -12,7 +12,7 @@ export default createStore({
   },
   actions: {
     async fetchHello() {
-      await axios.get("http://localhost:8080/api/test/hello")
+      await axios.get("http://localhost:3000/api/test/hello")
       .then(response => {
         this.commit("setHello", response.data)
       })
