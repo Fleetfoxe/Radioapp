@@ -2,7 +2,7 @@
 
 
     <div class="category-list wrapper">
-        <span class="name">{{ category.name }}</span>
+        <span class="name">{{ listCategories }}</span>
         <br>
     </div>
 </template>

@@ -9,7 +9,9 @@ export default {
 
     computed: {
         getCategory() {
+            console.log(this.getCategory);
             return this.$store.getters.getCategory
+
         }
     },
 
