@@ -1,7 +1,7 @@
 <template>
   <h1>Categories</h1>
   <div class="category-list">
-        <div>
+        <div v-if="categories > 0">
             <CategoryCard
                 v-for="(category, i) in categories"
                 :key="i"
@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import CategoryCard from "../components/CategoryCard"
+import CategoryCard from "../components/CategoryCard.vue"
 
 export default {
-    name: 'Category',
+    name: 'CategoryCard',
     components: {
         CategoryCard, 
         

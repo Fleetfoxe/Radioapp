@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import ChannelList from "@/views/ChannelList";
-import CategoryList from "@/views/CategoryList";
+import CategoryList from "@/views/CategoryList.vue";
 
 const routes = [
   {

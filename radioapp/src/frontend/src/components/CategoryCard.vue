@@ -1,7 +1,8 @@
 
 <template>
     <div class="category-list">
-        <span>Id: {{ category.id }} - {{ category.name }}</span>
+        <span class="id">Id: {{ category.id }}</span> -
+        <span class="name">Name: {{ category.name }}</span>
     </div>
 </template>
 
@@ -9,10 +10,6 @@
 <script>
 export default {
     props: ["category"],
-
-    methods: {
-        
-    }
     
 }
 </script>

@@ -16,10 +16,10 @@ export default createStore({
   },
 
 
-  //Kommunikationen med backend(API), hämtar data och tillsätter i state.
+  // Kommunikationen med backend(API), hämtar data och tillsätter i state.
   actions: {
     async fetchCategory(){
-      await axios.get("http://localhost:3001/rest/categories")
+      await axios.get("/rest/categories")
       .then(response => {
        this.commit("setCategory", response.data) 
        console.log(response.data)
