@@ -5,8 +5,10 @@ export default createStore({
   state: {
     categories: [],
     channels: [],
-    searchQuery: "P",
+    searchQuery: "",
     programs: [],
+    programById: {},
+    programId: 0
   },
 
 
@@ -25,7 +27,14 @@ export default createStore({
     },
     setSearchQuery(state, payload) {
       state.searchQuery = payload;
-    }
+    },
+    setProgramById(state, payload) {
+      state.programById = payload;
+    },
+    setProgramId(state, payload) {
+      state.programId = payload;
+    },
+
   },
 
 
@@ -53,7 +62,18 @@ export default createStore({
       .then(response => {
        this.commit("setPrograms", response.data) 
       })
-    }
+    },
+    async fetchProgramById() {
+      console.log('FetchProgramById running')
+      const url ='http://localhost:3001/rest/programs/id/' + this.state.programId
+      await axios.get(url)
+      .then(response => {
+       this.commit("setProgramById", response.data) 
+      })
+    },
+
+
+
   },
 
   // Hämtar datan åt komponenter
@@ -68,6 +88,9 @@ export default createStore({
     getPrograms(state){
       return state.programs
     },
+    getProgramById(state){
+      return state.programById
+    }
   },
   
 })

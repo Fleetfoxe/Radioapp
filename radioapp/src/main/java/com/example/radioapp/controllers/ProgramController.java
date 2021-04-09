@@ -2,6 +2,7 @@ package com.example.radioapp.controllers;
 
 import com.example.radioapp.entities.Category;
 import com.example.radioapp.entities.Program;
+import com.example.radioapp.entities.User;
 import com.example.radioapp.services.CategoryService;
 import com.example.radioapp.services.ProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,11 @@ public class ProgramController {
         return programService.getProgramsOnChannel(id);
     }
 
+    //get user by ID
+    @GetMapping("/rest/programs/id/{id}")
+    public Program getProgramById(@PathVariable long id){
+        return programService.getProgramById(id);
+    }
 
 /*
     @GetMapping("/rest/categories/{id}")

@@ -197,5 +197,33 @@ public class ProgramService {
         return programs;
     }
 
+    //Here is a method for getting a program as an object based on ID
+    //It does not return a list like other methods using external APIs
+
+    private String programByIdUrl= "http://api.sr.se/api/v2/programs/";
+
+    public Program getProgramById(long id) {
+        //URL: http://api.sr.se/api/v2/programs/1120?format=json
+
+        RestTemplate template = new RestTemplate();
+
+        Map response = template.getForObject(programByIdUrl + id + "?format=json", Map.class);
+
+        //Debug
+        System.out.println("ProgramService getProgramById - Response from SR: " + response);
+
+        //Mapping the object program inside the response
+        Map programMap = (Map) response.get("program");
+
+        //Creating a program object and adding things from the mapped response from SR
+
+        Program program = new Program(
+                (int) programMap.get("id"),
+                (String) programMap.get("name"),
+                (String) programMap.get("description")
+                );
+
+        return program;
+    }
 
 }

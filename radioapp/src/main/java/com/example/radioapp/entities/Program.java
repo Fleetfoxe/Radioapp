@@ -29,19 +29,6 @@ public class Program {
         this.programimage = programimage;
     }
 
-    /*
-        public Program(String description, String programurl, String programimage, int programcategory, int id, String name, int channelid, String channelname) {
-            this.description = description;
-            this.programurl = programurl;
-            this.programimage = programimage;
-            this.programcategory = programcategory;
-            this.id = id;
-            this.name = name;
-            this.channelid = channelid;
-            this.channelname = channelname;
-
-        }
-    */
     public Program() {
     }
 
@@ -49,9 +36,23 @@ public class Program {
         this.description = description;
     }
 
+    public Program(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Program(int id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
     public Program(String description, int programcategory) {
         this.description = description;
         this.programcategory = programcategory;
+    }
+
+    public Program(int channelid, String name) {
     }
 
     //public Program(String description, Long aLong, String name, String programurl) { }
