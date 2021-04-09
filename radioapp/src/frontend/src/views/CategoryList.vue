@@ -1,6 +1,8 @@
 <template>
   <h1>Categories</h1>
   <div class="category-list">
+        <h3>{{ getCategory }}</h3> <!-- utan denna syns ej i localhost -->
+      
         <div v-if="categories > 0">
             <CategoryCard
                 v-for="(category, i) in categories"
@@ -15,7 +17,7 @@
 import CategoryCard from "../components/CategoryCard.vue"
 
 export default {
-    name: 'CategoryCard',
+    name: 'CategoryCard.vue',
     components: {
         CategoryCard, 
         

@@ -30,7 +30,7 @@ export default createStore({
   // Hämtar datan åt komponenter
   getters: {
     getCategory(state){
-      return state.category
+      return state.categories
     }
   },
 
