@@ -4,6 +4,7 @@ import ChannelList from "@/views/ChannelList";
 import CategoryList from "@/views/CategoryList";
 import ProgramList from "@/views/ProgramList"
 import ProgramDetails from "@/views/ProgramDetails.vue"
+import CategoryDetails from "@/views/CategoryDetails.vue"
 
 
 const routes = [
@@ -27,6 +28,10 @@ const routes = [
   {
     path: "/program-details/:id",
     component: ProgramDetails
+  },
+  {
+    path: "/category-details/:id",
+    component: CategoryDetails
   },
 ];
 

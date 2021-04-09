@@ -53,8 +53,20 @@ export default createStore({
       .then(response => {
        this.commit("setPrograms", response.data) 
       })
-    }
+    },
   },
+  async fetchProgramsOnChannel() {
+    console.log('SearchQuery is: '+this.state.searchQuery)
+    const url ='http://localhost:3001/rest/programs/channel/{id}' + this.state.searchQuery
+    await axios.get(url)
+    .then(response => {
+     this.commit("setPrograms", response.data) 
+    })
+  },
+
+
+
+
 
   // Hämtar datan åt komponenter
   getters: {
