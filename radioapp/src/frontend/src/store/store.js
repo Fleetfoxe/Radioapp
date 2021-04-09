@@ -4,9 +4,10 @@ import axios from 'axios'
 export default createStore({
   state: {
     categories: [],
-    channels: []
+    channels: [],
     searchQuery: "P",
     programs: [],
+  },
 
 
   // Metoder som används för att komma åt/manipulera datan.
@@ -63,16 +64,10 @@ export default createStore({
 
     getChannel(state){
       return state.channels
-    }
+    },
     getPrograms(state){
       return state.programs
     },
   },
-
-
-
-
-
-  modules: {
-  }
+  
 })
