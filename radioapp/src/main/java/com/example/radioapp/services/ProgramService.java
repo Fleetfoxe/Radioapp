@@ -220,7 +220,8 @@ public class ProgramService {
         Program program = new Program(
                 (int) programMap.get("id"),
                 (String) programMap.get("name"),
-                (String) programMap.get("description")
+                (String) programMap.get("description"),
+                (String) programMap.get("programimage")
                 );
 
         return program;

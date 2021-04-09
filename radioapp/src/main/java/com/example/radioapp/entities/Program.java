@@ -36,15 +36,11 @@ public class Program {
         this.description = description;
     }
 
-    public Program(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
-
-    public Program(int id, String name, String description) {
+    public Program(int id, String name, String description, String programimage) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.programimage = programimage;
     }
 
     public Program(String description, int programcategory) {
