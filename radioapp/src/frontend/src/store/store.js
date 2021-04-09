@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export default createStore({
   state: {
-    searchQuery: "Arkivet",
+    searchQuery: "P",
     category: [],
     programs: [],
     },
@@ -15,8 +15,11 @@ export default createStore({
     setCategory(state, payload){
       state.category = payload;
     },
-    setProgram(state, payload) {
+    setPrograms(state, payload) {
       state.programs = payload;
+    },
+    setSearchQuery(state, payload) {
+      state.searchQuery = payload;
     }
   },
 
@@ -31,12 +34,11 @@ export default createStore({
       })
     },
     async fetchPrograms() {
-      //searchQuery = this.getSearchQuery()
-      let url ="http://localhost:3001/rest/programs"
+      console.log('SearchQuery is: '+this.state.searchQuery)
+      const url ='http://localhost:3001/rest/programs/' + this.state.searchQuery
       await axios.get(url)
       .then(response => {
-       this.commit("setProgram", response.data) 
-       console.log(response.data)
+       this.commit("setPrograms", response.data) 
       })
     }
   },
@@ -49,9 +51,6 @@ export default createStore({
     getPrograms(state){
       return state.programs
     },
-    getSearchQuery(state) {
-      return state.searchQuery
-    }
   },
 
 
