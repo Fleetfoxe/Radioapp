@@ -15,7 +15,7 @@ export default createStore({
     setCategory(state, payload){
       state.category = payload;
     },
-    setProgram(state, payload) {
+    setPrograms(state, payload) {
       state.programs = payload;
     },
     setSearchQuery(state, payload) {
@@ -38,7 +38,7 @@ export default createStore({
       const url ='http://localhost:3001/rest/programs/' + this.state.searchQuery
       await axios.get(url)
       .then(response => {
-       this.commit("setProgram", response.data) 
+       this.commit("setPrograms", response.data) 
       })
     }
   },

@@ -6,11 +6,11 @@
 </form>
 </div>
     <div v-if="programs.length > 0">
-      <ProgramCard 
+      <ProgramCard
         v-for="(program, i) in programs"
         :key="program + i"
         :program="program"
-      /> 
+      />
     </div>
 
 </template>
