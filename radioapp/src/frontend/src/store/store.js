@@ -5,7 +5,8 @@ export default createStore({
   state: {
     categories: [],
     channels: []
-  },
+    searchQuery: "P",
+    programs: [],
 
 
   // Metoder som används för att komma åt/manipulera datan.
@@ -17,6 +18,12 @@ export default createStore({
 
     setChannel(state, payload){
       state.channels = payload;
+    },
+    setPrograms(state, payload) {
+      state.programs = payload;
+    },
+    setSearchQuery(state, payload) {
+      state.searchQuery = payload;
     }
   },
 
@@ -37,6 +44,14 @@ export default createStore({
        this.commit("setChannel", response.data) 
        console.log(response.data)
       })
+    },
+    async fetchPrograms() {
+      console.log('SearchQuery is: '+this.state.searchQuery)
+      const url ='http://localhost:3001/rest/programs/' + this.state.searchQuery
+      await axios.get(url)
+      .then(response => {
+       this.commit("setPrograms", response.data) 
+      })
     }
   },
 
@@ -49,6 +64,9 @@ export default createStore({
     getChannel(state){
       return state.channels
     }
+    getPrograms(state){
+      return state.programs
+    },
   },
 
 

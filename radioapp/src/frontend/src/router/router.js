@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import ChannelList from "@/views/ChannelList";
 import CategoryList from "@/views/CategoryList";
+import ProgramList from "@/views/ProgramList"
+import ProgramDetails from "@/views/ProgramDetails.vue"
+
 
 const routes = [
   {
@@ -16,6 +19,14 @@ const routes = [
   {
     path: "/categorylist",
     component: CategoryList
+  },
+  {
+    path: "/programlist",
+    component: ProgramList
+  },
+  {
+    path: "/program-details/:id",
+    component: ProgramDetails
   },
 ];
 
