@@ -1,7 +1,7 @@
 <template>
 
 
-<div class="category-card">
+<div class="category-card" @click="redirectToCategoryDetails">
     <h2>
      <span>{{ category.name }}</span> 
     </h2>
@@ -12,6 +12,12 @@
 <script>
 export default {
     props: ["category"],
+    methods: {
+        redirectToCategoryDetails() {
+            let routerUrl = '/category-details/' + this.category.id
+            this.$router.push({path: routerUrl})
+        }
+    }
     
 };
 </script>
