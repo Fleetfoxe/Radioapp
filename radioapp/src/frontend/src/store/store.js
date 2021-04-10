@@ -8,11 +8,12 @@ export default createStore({
     searchQuery: "",
     programs: [],
     programById: {},
-    programId: 0
+    programId: 0,
+    loggedInUser: null
   },
 
 
-  // Metoder som används för att komma åt/manipulera datan.
+  // Metoder som används för att manipulera datan.
   // Påkallas med commit
   mutations: {
     setCategory(state, payload){
@@ -33,6 +34,9 @@ export default createStore({
     },
     setProgramId(state, payload) {
       state.programId = payload;
+    },
+    setLoggedInUser(state, user) {
+      state.loggedInUser = user
     },
 
   },

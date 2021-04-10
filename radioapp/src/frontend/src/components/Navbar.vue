@@ -7,6 +7,8 @@
       <router-link to="/categorylist">CategoryList</router-link>
       -
       <router-link to="/programlist">ProgramList</router-link>
+      - - -
+      <router-link to="/Login">Login</router-link>
   </nav>
 </template>
 
