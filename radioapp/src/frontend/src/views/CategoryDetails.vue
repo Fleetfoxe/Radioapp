@@ -4,9 +4,9 @@
       
 </div>
 
-        <div v-if="programs.length > 0">
+        <div v-if="programsByCategoryId.length > 0">
       <ProgramCard
-        v-for="(program, i) in programs"
+        v-for="(program, i) in programsByCategoryId"
         :key="program + i"
         :program="program"
       />
@@ -25,33 +25,22 @@ export default {
       
     },
       mounted() {
-        console.log(this.$route.params.id)
-
         this.id = this.$route.params.id
+        this.$store.commit("setCategoryId", this.id)
+            this.$store.dispatch("fetchProgramsByCategoryId");
     },
 
-    methods: {
-        searchMethod() {
-             let id = this.id
-    
-            this.$store.commit("setSearchQuery", id)
-            this.$store.dispatch("fetchProgramsOnCategory");
-        }
-    },
 
     components: {
     ProgramCard
   },
 
   computed: {
-    programs() {
-            return this.$store.getters.getPrograms
+    programsByCategoryId() {
+            return this.$store.getters.getProgramsByCategoryId
         },
     
   },
- // mounted() {
- //       this.$store.dispatch("fetchProgramsOnChannel");
-   // }
 
 
 }

@@ -7,6 +7,7 @@ export default createStore({
     channels: [],
     searchQuery: "P",
     programs: [],
+    categoryId: 0, 
 
     programsByCategoryId: []
   },
@@ -29,7 +30,7 @@ export default createStore({
       state.searchQuery = payload;
     },
     setProgramsByCategoryId(state, payload) {
-      state.programsByCategoryId = payload
+      state.programsByCategoryId = payload;
     }
   },
 
@@ -53,7 +54,7 @@ export default createStore({
     },
     async fetchPrograms() {
       console.log('SearchQuery is: '+this.state.searchQuery)
-      const url ='http://localhost:3001/rest/programs/' + this.state.searchQuery
+      const url ='http://localhost:3001/rest/programs/' + this.state.name
       await axios.get(url)
       .then(response => {
        this.commit("setPrograms", response.data) 
@@ -91,6 +92,9 @@ export default createStore({
     },
     getPrograms(state){
       return state.programs
+    },
+    getProgramsByCategoryId(state) {
+      return state.programsByCategoryId
     },
   },
   
