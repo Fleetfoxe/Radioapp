@@ -7,14 +7,25 @@
       <router-link to="/categorylist">CategoryList</router-link>
       -
       <router-link to="/programlist">ProgramList</router-link>
-      - - -
+      -
       <router-link to="/Login">Login</router-link>
+      /
+      <button @click="logout">Logout</button>
+
   </nav>
 </template>
 
 <script>
 export default {
-
+  methods: {
+    logout() {
+            //logout from backend
+            fetch('/logout', {mode: 'no-cors'})
+            
+            //removes user from store.js
+            this.$store.commit('setLoggedInUser', null)
+            }
+          }
 }
 </script>
 

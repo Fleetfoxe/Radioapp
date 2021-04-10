@@ -12,24 +12,27 @@ export default {
     data() {
         return {
             email: '',
-            password: ''
+            password: '',
+            name: 'Bob'
         }
 
     },
     methods: {
         async login() {
+            //Putting email/password in credentials and change special signs like @
             const credentials = 'username=' + 
             encodeURIComponent(this.email)
             + '&password=' +
             encodeURIComponent(this.password)
 
+            //Login to backend using email/password in credentials
         let response = await fetch("/login", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             mode: 'no-cors',
             body: credentials
       });
-
+            //Using backend WhoAmI to se who is logged in to backend
         let user = await fetch('/auth/whoami')
         try{
             user = await user.json()
@@ -49,7 +52,8 @@ export default {
         async register() {
             let credentials = {
                 email: this.email,
-                password: this.password
+                password: this.password,
+                name: this.name
             }
 
             let response = await fetch('/auth/register', {
