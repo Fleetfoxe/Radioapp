@@ -35,7 +35,7 @@ export default {
              let id = this.id
     
             this.$store.commit("setSearchQuery", id)
-            this.$store.dispatch("fetchProgramsOnchannel");
+            this.$store.dispatch("fetchProgramsOnCategory");
         }
     },
 

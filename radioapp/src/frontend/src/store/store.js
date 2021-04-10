@@ -63,7 +63,14 @@ export default createStore({
      this.commit("setPrograms", response.data) 
     })
   },
-
+  async fetchProgramsOnCategory() {
+    console.log('SearchQuery is: '+this.state.searchQuery)
+    const url ='http://localhost:3001/rest/programs/category/{id}' + this.state.searchQuery
+    await axios.get(url)
+    .then(response => {
+     this.commit("setPrograms", response.data) 
+    })
+  },
 
 
 
