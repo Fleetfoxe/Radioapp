@@ -1,12 +1,14 @@
 <template>
   <div>
       <h1>channel details</h1>
+    
+
       
 </div>
 
-        <div v-if="programs.length > 0">
+        <div v-if=" programsByChannelId.length > 0">
       <ProgramCard
-        v-for="(program, i) in programs"
+        v-for="(program, i) in  programsByChannelId"
         :key="program + i"
         :program="program"
       />
@@ -25,28 +27,26 @@ export default {
       
     },
       mounted() {
-        console.log(this.$route.params.id)
-
+       
         this.id = this.$route.params.id
-    },
-
-    methods: {
-        searchMethod() {
-             let id = this.id
-             console.log("searchtext is: "+id)
     
-            this.$store.commit("setSearchQuery", id)
-            this.$store.dispatch("fetchProgramsOnchannel");
-        }
-    },
+      //This is step 2. We take the id from the id int in data() and we send it to ChannelId int in store.js
+        // it will be used to fetch the correct program from springboot
+        this.$store.commit("setChannelId", this.id)
+      
+
+        //This is step 3. Here we activate the connection to springboot with action fetchProgramsByChannelId
+        this.$store.dispatch("fetchProgramsByChannelId");},
+
+    
 
     components: {
     ProgramCard
   },
 
   computed: {
-    programs() {
-            return this.$store.getters.getPrograms
+    programsByChannelId() {
+            return this.$store.getters.getProgramsByChannelId
         },
     
   },

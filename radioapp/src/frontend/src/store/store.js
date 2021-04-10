@@ -7,7 +7,8 @@ export default createStore({
     channels: [],
     searchQuery: "P",
     programs: [],
-    channelId:0
+    channelId:0,
+    programsByChannelId:[]
   },
 
 
@@ -29,6 +30,9 @@ export default createStore({
     },
     setChannelId(state, payload) {
       state.channelId = payload;
+    },
+    setProgramsByChannelId(state, payload) {
+      state.programsByChannelId = payload;
     }
   },
 
@@ -58,12 +62,12 @@ export default createStore({
        this.commit("setPrograms", response.data) 
       })
     },
-    async fetchProgramsOnChannel() {
-      console.log('SearchQuery is: '+this.state.channelId)
-      const url ='http://localhost:3001/rest/channelscleaned/' + this.state.channelId
+    async fetchProgramsByChannelId() {
+      console.log('Channel id is: '+this.state.channelId)
+      const url ='http://localhost:3001/rest/programs/channel/' + this.state.channelId
       await axios.get(url)
       .then(response => {
-       this.commit("setChannelId", response.data) 
+       this.commit("setProgramsByChannelId", response.data) 
       })
     },
 
@@ -82,6 +86,9 @@ export default createStore({
     },
     getPrograms(state){
       return state.programs
+    },
+    getProgramsByChannelId(state){
+      return state.programsByChannelId
     },
   },
   

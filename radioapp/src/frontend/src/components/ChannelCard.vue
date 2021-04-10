@@ -16,6 +16,7 @@ export default {
     redirectToChannelDetails() {
       let routerUrl = '/channel-details/' + this.channel.id
       this.$router.push({path: routerUrl})
+      
     }
   }
  
