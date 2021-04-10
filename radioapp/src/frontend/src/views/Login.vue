@@ -37,7 +37,7 @@ export default {
         try{
             user = await user.json()
             this.$store.commit('setLoggedInUser', user)
-            console.log(user)
+            console.log(user.email +" is logged in")
         } catch {
              alert('Wrong username/password');
         }
