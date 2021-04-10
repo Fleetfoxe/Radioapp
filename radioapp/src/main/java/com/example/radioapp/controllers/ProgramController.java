@@ -22,6 +22,7 @@ public class ProgramController {
         return programService.getAllProgramNamesFromSrById(id);
     }
 
+    //Get all programs
     @GetMapping("/rest/programs")
     public List<Program> getAllProgramsFromSR() {
         return programService.getAllProgramFromSr();
