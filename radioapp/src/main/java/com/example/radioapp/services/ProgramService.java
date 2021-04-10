@@ -67,7 +67,7 @@ public class ProgramService {
 
 
 
-    private String allProgramApi = "http://api.sr.se/api/v2/programs/?format=json&pagination=false";
+    private String allProgramApi = "http://api.sr.se/api/v2/programs/?format=json&pagination=true";
 
     public List<Program> getAllProgramFromSr() {
         RestTemplate template = new RestTemplate();
