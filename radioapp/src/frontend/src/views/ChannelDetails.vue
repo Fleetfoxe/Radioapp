@@ -33,6 +33,7 @@ export default {
     methods: {
         searchMethod() {
              let id = this.id
+             console.log("searchtext is: "+id)
     
             this.$store.commit("setSearchQuery", id)
             this.$store.dispatch("fetchProgramsOnchannel");
