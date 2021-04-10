@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>category details</h1>
+      <h1>Programs by category</h1>
       
 </div>
 

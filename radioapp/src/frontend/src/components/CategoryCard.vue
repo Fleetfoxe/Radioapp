@@ -1,10 +1,10 @@
 <template>
 
 
-<div class="category-card" @click="redirectToCategoryDetails">
-    <h2>
-     <span>{{ category.name }}</span> 
-    </h2>
+    <div class="category-card" @click="redirectToCategoryDetails">
+        <h2>
+            <span>{{ category.name }}</span> 
+        </h2>
         
     </div>
 </template>
