@@ -3,7 +3,9 @@
 
     <div class="category-card" @click="redirectToCategoryDetails">
         <h2>
-            <span>{{ category.name }}</span> 
+           <!-- <span>Id: {{ category.id }}</span> 
+                <br> -->           
+            <span>{{ category.name }}</span>
         </h2>
         
     </div>
@@ -19,7 +21,7 @@ export default {
         }
     }
     
-};
+}
 </script>
 
 <style>

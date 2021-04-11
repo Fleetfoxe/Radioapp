@@ -27,7 +27,7 @@ export default {
       mounted() {
         this.id = this.$route.params.id
         this.$store.commit("setCategoryId", this.id)
-            this.$store.dispatch("fetchProgramsByCategoryId");
+        this.$store.dispatch("fetchProgramsByCategoryId"); // Something makes this shit unknown
     },
 
 
