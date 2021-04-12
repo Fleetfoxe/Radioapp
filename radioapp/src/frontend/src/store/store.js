@@ -9,6 +9,8 @@ export default createStore({
     programs: [],
     programById: {},
     programId: 0
+    categoryId: 0, 
+    programsByCategoryId: []
   },
 
 
@@ -35,6 +37,13 @@ export default createStore({
       state.programId = payload;
     },
 
+    },
+    setCategoryId(state, payload) {
+      state.categoryId = payload;
+    },
+    setProgramsByCategoryId(state, payload) {
+      state.programsByCategoryId = payload;
+    }
   },
 
 
@@ -57,7 +66,7 @@ export default createStore({
     },
     async fetchPrograms() {
       console.log('SearchQuery is: '+this.state.searchQuery)
-      const url ='http://localhost:3001/rest/programs/' + this.state.searchQuery
+      const url ='http://localhost:3001/rest/programs/' + this.state.name
       await axios.get(url)
       .then(response => {
        this.commit("setPrograms", response.data) 
@@ -74,7 +83,27 @@ export default createStore({
 
 
 
+    },
+  async fetchProgramsOnChannel() {
+    console.log('SearchQuery is: '+this.state.searchQuery)
+    const url ='http://localhost:3001/rest/programs/channel/{id}' + this.state.searchQuery
+    await axios.get(url)
+    .then(response => {
+     this.commit("setPrograms", response.data) 
+    })
   },
+  async fetchProgramsByCategoryId() {
+    console.log('Category Id: '+ this.state.categoryId)
+    const url = 'http://localhost:3001/rest/programs/category/' + this.state.categoryId
+    await axios.get(url)
+    .then(response => {
+      this.commit("setProgramsByCategoryId", response.data)
+    })
+  },
+
+},
+
+
 
   // Hämtar datan åt komponenter
   getters: {
@@ -91,6 +120,9 @@ export default createStore({
     getProgramById(state){
       return state.programById
     }
+    getProgramsByCategoryId(state) {
+      return state.programsByCategoryId
+    },
   },
   
 })
