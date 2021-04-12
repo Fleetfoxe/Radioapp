@@ -14,12 +14,13 @@ export default {
             //Here is the id of the program stored in this view
             id:''
         }
+        
     },
     computed: {
     program() {
             //This is step 4. Here we get the program object from store that comes from springboot 
             return this.$store.getters.getProgramById
-        },
+        }
     },
 
     mounted() {

@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class EpisodeService {
@@ -32,7 +32,35 @@ public class EpisodeService {
             //create a episode object with extracted data
             // id, title, starttimeutc, endtimeutc, program, channel, imageurl
 
+
+
             Map broadcastTime=(Map) episode.get("broadcasttime");
+
+            // STEP 1:
+           String date = (String) broadcastTime.get("starttimeutc"); // Insert broadcast.get("start time utc") in string variable = date
+           System.out.println(date); // Test date
+
+            // STEP 2: Endast få ut siffror från date + sätt in i ny variabel (int, long) SIMPLE DATE FORMAT
+           String digitsOnly = date.replaceAll("[^0-9]", ""); // Only extracts digits from date (String)
+           System.out.println(digitsOnly); // Test so that we only get the digits from string
+            
+            /*
+            Google:
+            Java SimpleDateFormat Example: Date to String
+            import java.text.SimpleDateFormat;
+            import java.util.Date;
+                public class SimpleDateFormatExample {
+                    public static void main(String[] args) {
+                        Date date = new Date();
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                        String strDate= formatter.format(date);
+            */
+
+
+            // step 3: omvandla epoc till utc (simple date format = the key) --> lagras i ny variabel (innehåller korrekt datum)
+
+            // step 4: add step 3 to episode
+
             Episode episode1= new Episode(
                     (int) episode.get("id"),
                     (String)episode.get("title"),
