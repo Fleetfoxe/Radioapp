@@ -1,6 +1,10 @@
 <template>
 <div class="program-card" @click="redirectToProgramDetails">
-<span>Id:{{program.id}} - {{program.name}}</span>
+<span>
+  <h2>
+    {{program.name}}
+  </h2>
+  </span>
 </div>
 </template>
 
