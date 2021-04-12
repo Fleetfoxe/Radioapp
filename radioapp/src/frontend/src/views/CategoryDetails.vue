@@ -1,6 +1,9 @@
 <template>
   <div>
-      <h1>Programs by category</h1>
+      <h1>Category: {{categoryName}}</h1>
+       
+      <h2>programs:</h2>
+
       
 </div>
 
@@ -39,6 +42,10 @@ export default {
     programsByCategoryId() {
             return this.$store.getters.getProgramsByCategoryId
         },
+
+        categoryName(){
+          return this.$store.getters.getCategoryName
+        }
     
   },
 

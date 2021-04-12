@@ -14,6 +14,7 @@ export default {
 
    methods: {
     redirectToChannelDetails() {
+      this.$store.commit("setTempChannelName", this.channel.name)
       let routerUrl = '/channel-details/' + this.channel.id
       this.$router.push({path: routerUrl})
       

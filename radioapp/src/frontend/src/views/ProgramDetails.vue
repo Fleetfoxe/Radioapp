@@ -4,6 +4,8 @@
       <h4>{{ program.description }}</h4>
       <h4>Link to program image: </h4>
       <p>{{ program.programimage }}</p>
+     <!-- <img v-for="img in images" v-bind:src="{{ program.programimage }}"/>
+     -->
   </div>
 </template>
 
@@ -12,7 +14,8 @@ export default {
     data() {
         return {
             //Here is the id of the program stored in this view
-            id:''
+            id:'',
+            //images:[]
         }
     },
     computed: {
