@@ -10,7 +10,7 @@ public class Episode {
    @Id
    private long episodeid;
    private String title;
-   private String StartTimeUtc;
+   private long StartTimeUtc;
    private String endTimeUtc;
   // private String program;
    private String ChanId;
@@ -19,7 +19,7 @@ public class Episode {
     public Episode() {
     }
 
-    public Episode(long episodeid, String title, String startTimeUtc, String endTimeUtc, String imageUrl) {
+    public Episode(long episodeid, String title, long startTimeUtc, String endTimeUtc, String imageUrl) {
         this.episodeid = episodeid;
         this.title = title;
         this.StartTimeUtc = startTimeUtc;
@@ -27,18 +27,18 @@ public class Episode {
         this.imageUrl = imageUrl;
     }
 
-    public Episode(String title, String startTimeUtc) {
+    public Episode(String title, long startTimeUtc) {
         this.title = title;
         StartTimeUtc = startTimeUtc;
     }
 
-    public Episode(String title, String startTimeUtc, String endTimeUtc) {
+    public Episode(String title, long startTimeUtc, String endTimeUtc) {
         this.title = title;
         StartTimeUtc = startTimeUtc;
         this.endTimeUtc = endTimeUtc;
     }
 
-    public Episode(String title, String startTimeUtc, String endTimeUtc, String imageUrl) {
+    public Episode(String title, long startTimeUtc, String endTimeUtc, String imageUrl) {
         this.title = title;
         StartTimeUtc = startTimeUtc;
         this.endTimeUtc = endTimeUtc;
@@ -59,7 +59,7 @@ public class Episode {
         this.imageurl = imageurl;
     }*/
 
-    public Episode(long episodeid, String title, String starttimeutc, String endtimeutc, String ChanId, String imageUrl) {
+    public Episode(long episodeid, String title, long starttimeutc, String endtimeutc, String ChanId, String imageUrl) {
         this.episodeid = episodeid;
         this.title = title;
         this.StartTimeUtc = starttimeutc;
@@ -97,11 +97,11 @@ public class Episode {
         this.title = title;
     }
 
-    public String getStartTimeUtc() {
+    public long getStartTimeUtc() {
         return StartTimeUtc;
     }
 
-    public void setStartTimeUtc(String startTimeUtc) {
+    public void setStartTimeUtc(long startTimeUtc) {
         this.StartTimeUtc = startTimeUtc;
     }
 
