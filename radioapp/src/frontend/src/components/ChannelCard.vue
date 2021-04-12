@@ -35,6 +35,15 @@ export default {
   border: 5px solid whitesmoke;
   
 }
+.channel-card:hover {
+  background-color: rgb(117, 114, 114);
+  margin-bottom: 20px;
+  padding: 10px;
+  font-family: 'Arial';
+  border-radius: 30px;
+  border: 5px solid whitesmoke;
+  
+}
 
 
 
