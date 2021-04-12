@@ -5,12 +5,12 @@ export default createStore({
   state: {
     categories: [],
     channels: [],
-    searchQuery: "",
+    searchQuery: "P",
     programs: [],
     programById: {},
     programId: 0,
     categoryId: 0, 
-    programsByCategoryId: []
+    programsByCategoryId: [],
     loggedInUser: null
   },
 
@@ -82,10 +82,6 @@ export default createStore({
       .then(response => {
        this.commit("setProgramById", response.data) 
       })
-    
-
-
-
     },
   async fetchProgramsOnChannel() {
     console.log('SearchQuery is: '+this.state.searchQuery)
