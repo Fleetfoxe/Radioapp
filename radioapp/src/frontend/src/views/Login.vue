@@ -36,6 +36,8 @@ export default {
         let user = await fetch('/auth/whoami')
         try{
             user = await user.json()
+            
+            //save user in store using setLoggedInUser mutation
             this.$store.commit('setLoggedInUser', user)
             console.log(user.email +" is logged in")
         } catch {
