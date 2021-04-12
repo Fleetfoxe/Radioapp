@@ -11,7 +11,7 @@ export default createStore({
     programId: 0,
     categoryId: 0, 
     programsByCategoryId: [],
-    loggedInUser: null
+    loggedInUser: null,
     channelId:0,
     programsByChannelId:[]
   },
@@ -99,10 +99,6 @@ export default createStore({
        this.commit("setProgramsByChannelId", response.data) 
       })
     },
-
-
-
-  },
   async fetchProgramsByCategoryId() {
     console.log('Category Id: '+ this.state.categoryId)
     const url = 'http://localhost:3001/rest/programs/category/' + this.state.categoryId
