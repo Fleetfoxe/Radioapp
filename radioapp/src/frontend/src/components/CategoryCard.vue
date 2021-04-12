@@ -14,8 +14,10 @@ export default {
     props: ["category"],
     methods: {
         redirectToCategoryDetails() {
+            this.$store.commit("setTempCategoryName", this.category.name)
             let routerUrl = '/category-details/' + this.category.id
             this.$router.push({path: routerUrl})
+
         }
     }
     

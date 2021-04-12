@@ -1,5 +1,6 @@
 <template>
 <h1>Categories</h1>
+
   <div class="category-list">
         
     <div v-if="categories.length > 0">

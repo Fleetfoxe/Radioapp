@@ -1,9 +1,9 @@
 <template>
   <div>
-      <h1>channel details</h1>
-    
-
-      
+      <h1>Programs on {{channelName}}</h1>
+      <h2>channel details</h2>
+     
+          
 </div>
 
         <div v-if=" programsByChannelId.length > 0">
@@ -48,6 +48,10 @@ export default {
     programsByChannelId() {
             return this.$store.getters.getProgramsByChannelId
         },
+        
+      channelName(){
+          return this.$store.getters.getChannelName
+        }
     
   },
  // mounted() {

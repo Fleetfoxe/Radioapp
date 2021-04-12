@@ -13,7 +13,9 @@ export default createStore({
     programsByCategoryId: [],
     loggedInUser: null,
     channelId:0,
-    programsByChannelId:[]
+    programsByChannelId:[],
+    tempCategoryName: String,
+    tempChannelName: String
   },
 
 
@@ -53,7 +55,14 @@ export default createStore({
     },
     setProgramsByChannelId(state, payload) {
       state.programsByChannelId = payload;
+    },
+    setTempCategoryName(state, payload){
+      state.tempCategoryName=payload;
+    },
+    setTempChannelName(state, payload){
+      state.tempChannelName=payload;
     }
+    
   },
 
 
@@ -133,6 +142,14 @@ export default createStore({
     getProgramsByChannelId(state){
       return state.programsByChannelId
     },
+    getCategoryName(state){
+      return state.tempCategoryName
+    },
+    
+    getChannelName(state){
+      return state.tempChannelName
+
+    }
   },
   
 })
