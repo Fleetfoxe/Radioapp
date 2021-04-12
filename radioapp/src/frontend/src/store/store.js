@@ -40,8 +40,6 @@ export default createStore({
     setLoggedInUser(state, user) {
       state.loggedInUser = user
     },
-
-    },
     setCategoryId(state, payload) {
       state.categoryId = payload;
     },
@@ -49,6 +47,7 @@ export default createStore({
       state.programsByCategoryId = payload;
     }
   },
+
 
 
   //Kommunikationen med backend(API), hämtar data och tillsätter i state.
@@ -83,7 +82,7 @@ export default createStore({
       .then(response => {
        this.commit("setProgramById", response.data) 
       })
-    },
+    
 
 
 
@@ -123,7 +122,7 @@ export default createStore({
     },
     getProgramById(state){
       return state.programById
-    }
+    },
     getProgramsByCategoryId(state) {
       return state.programsByCategoryId
     },
