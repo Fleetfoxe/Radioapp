@@ -5,7 +5,7 @@ export default createStore({
   state: {
     categories: [],
     channels: [],
-    searchQuery: "P",
+    searchQuery: "",
     programs: [],
     programById: {},
     programId: 0,
@@ -13,7 +13,18 @@ export default createStore({
     programsByCategoryId: [],
     loggedInUser: null,
     channelId:0,
-    programsByChannelId:[]
+    programsByChannelId:[],
+    favorites: [
+      {
+        programId: 1
+      },
+      {
+        programId: 2
+      },
+      {
+        programId: 3
+      },
+    ],
   },
 
 
@@ -53,7 +64,10 @@ export default createStore({
     },
     setProgramsByChannelId(state, payload) {
       state.programsByChannelId = payload;
-    }
+    },
+    setFavorites(state, payload) {
+      state.favorites = payload;
+    },
   },
 
 
@@ -132,6 +146,9 @@ export default createStore({
     },
     getProgramsByChannelId(state){
       return state.programsByChannelId
+    },
+    getFavorites(state){
+      return state.favorites
     },
   },
   
