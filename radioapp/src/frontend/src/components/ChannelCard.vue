@@ -1,15 +1,24 @@
 <template>
-<div class="channel-card">
+<div class="channel-card" @click="redirectToChannelDetails">
   
    <h2>
-   <span>{{channel.name}}</span> 
+   <span>{{channel.name}} </span> 
+  
    </h2>
 </div>
 </template>
 
 <script>
 export default {
-  props:["channel"]
+  props:["channel"],
+
+   methods: {
+    redirectToChannelDetails() {
+      let routerUrl = '/channel-details/' + this.channel.id
+      this.$router.push({path: routerUrl})
+      
+    }
+  }
  
 }
 </script>
@@ -24,6 +33,16 @@ export default {
   font-family: 'Arial';
   border-radius: 30px;
   border: 5px solid whitesmoke;
+  
+}
+.channel-card:hover {
+  background-color: rgb(117, 114, 114);
+  margin-bottom: 20px;
+  padding: 10px;
+  font-family: 'Arial';
+  border-radius: 30px;
+  border: 5px solid whitesmoke;
+  
 }
 
 

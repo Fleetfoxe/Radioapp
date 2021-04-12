@@ -12,6 +12,8 @@ export default createStore({
     categoryId: 0, 
     programsByCategoryId: [],
     loggedInUser: null
+    channelId:0,
+    programsByChannelId:[]
   },
 
 
@@ -45,6 +47,12 @@ export default createStore({
     },
     setProgramsByCategoryId(state, payload) {
       state.programsByCategoryId = payload;
+    },
+    setChannelId(state, payload) {
+      state.channelId = payload;
+    },
+    setProgramsByChannelId(state, payload) {
+      state.programsByChannelId = payload;
     }
   },
 
@@ -83,13 +91,17 @@ export default createStore({
        this.commit("setProgramById", response.data) 
       })
     },
-  async fetchProgramsOnChannel() {
-    console.log('SearchQuery is: '+this.state.searchQuery)
-    const url ='http://localhost:3001/rest/programs/channel/{id}' + this.state.searchQuery
-    await axios.get(url)
-    .then(response => {
-     this.commit("setPrograms", response.data) 
-    })
+    async fetchProgramsByChannelId() {
+      console.log('Channel id is: '+this.state.channelId)
+      const url ='http://localhost:3001/rest/programs/channel/' + this.state.channelId
+      await axios.get(url)
+      .then(response => {
+       this.commit("setProgramsByChannelId", response.data) 
+      })
+    },
+
+
+
   },
   async fetchProgramsByCategoryId() {
     console.log('Category Id: '+ this.state.categoryId)
@@ -121,6 +133,9 @@ export default createStore({
     },
     getProgramsByCategoryId(state) {
       return state.programsByCategoryId
+    },
+    getProgramsByChannelId(state){
+      return state.programsByChannelId
     },
   },
   

@@ -31,17 +31,20 @@ export default {
 
 <style scoped>
 nav {
+  font-size: 40px;
   padding: 5px;
   background-color: lightblue;
   border-bottom: 2px solid lightgray;
-  color: white;
+  color: black;
 }
+
+
 a {
   color: white
 }
 
 a:hover {
-  color: black;
+  color: rgb(8, 8, 8);
 }
 
 </style>
