@@ -77,7 +77,7 @@ export default createStore({
     },
     async fetchPrograms() {
       console.log('SearchQuery is: '+this.state.searchQuery)
-      const url ='http://localhost:3001/rest/programs/' + this.state.name
+      const url ='http://localhost:3001/rest/programs/' + this.state.searchQuery
       await axios.get(url)
       .then(response => {
        this.commit("setPrograms", response.data) 
