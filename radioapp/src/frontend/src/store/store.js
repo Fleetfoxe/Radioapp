@@ -14,17 +14,7 @@ export default createStore({
     loggedInUser: null,
     channelId:0,
     programsByChannelId:[],
-    favorites: [
-      {
-        programId: 1
-      },
-      {
-        programId: 2
-      },
-      {
-        programId: 3
-      },
-    ],
+    favorites: [],
   },
 
 
@@ -119,6 +109,13 @@ export default createStore({
     await axios.get(url)
     .then(response => {
       this.commit("setProgramsByCategoryId", response.data)
+    })
+  },
+  async fetchFavoritePrograms(){
+    await axios.get("http://localhost:3000/rest/programs/favorites")
+    .then(response => {
+     this.commit("setPrograms", response.data) 
+     console.log(response.data)
     })
   },
 

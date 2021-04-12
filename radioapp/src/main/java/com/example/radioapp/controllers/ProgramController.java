@@ -1,6 +1,7 @@
 package com.example.radioapp.controllers;
 
 import com.example.radioapp.entities.Category;
+import com.example.radioapp.entities.Favorite;
 import com.example.radioapp.entities.Program;
 import com.example.radioapp.entities.User;
 import com.example.radioapp.services.CategoryService;
@@ -45,9 +46,9 @@ public class ProgramController {
         return programService.getProgramById(id);
     }
 
-/*
-    @GetMapping("/rest/categories/{id}")
-    public Category getCategoryById(@PathVariable long id){
-        return categoryService.getById(id);
-    }*/
+    //get MY favorite programs (List of programs that are favorites)
+    @GetMapping("/rest/programs/favorites")
+    public List<Program> showMyFavoritePrograms() {
+        return programService.showMyFavoritePrograms();
+    }
 }
