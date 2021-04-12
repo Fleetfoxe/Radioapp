@@ -77,10 +77,9 @@ public class EpisodeService {
 
         for(Map episode: episodeMaps){
 
-            Map broadcastTime=(Map) episode.get("broadcasttime");
 
             // STEP 1:
-            String date = (String) broadcastTime.get("starttimeutc"); // Insert broadcast.get("start time utc") in string variable = date
+            String date = (String) episode.get("starttimeutc"); // Insert broadcast.get("start time utc") in string variable = date
             System.out.println(date); // Test date
 
             // STEP 2: Endast få ut siffror från date + sätt in i ny variabel (int, long) SIMPLE DATE FORMAT
