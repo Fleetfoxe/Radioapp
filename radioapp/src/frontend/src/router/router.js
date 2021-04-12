@@ -5,9 +5,16 @@ import CategoryList from "@/views/CategoryList";
 import ProgramList from "@/views/ProgramList"
 import ProgramDetails from "@/views/ProgramDetails.vue"
 import CategoryDetails from "@/views/CategoryDetails.vue"
+import Login from "@/views/Login.vue"
+
 
 
 const routes = [
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+  },
   {
     path: "/",
     name: "Home",
