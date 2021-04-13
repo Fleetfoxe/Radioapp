@@ -19,6 +19,7 @@ export default createStore({
     programsByChannelIdAndDate:[],
     tempChannelId:164,
     theDate:"2021-04-13"
+    episodesByProgramId: []
   },
 
 
@@ -74,8 +75,12 @@ export default createStore({
 
     setBroadcastOnChannel(state, payload) {
       state.programsByChannelIdAndDate = payload;
-    },
     
+    },
+    setEpisodesOnProgram(state, payload) {
+      state.episodesByProgramId = payload;
+    }
+
   },
 
 
@@ -139,6 +144,16 @@ export default createStore({
         this.commit("setBroadcastOnChannel", response.data)
       })
     },
+  async fetchEpisodesOnProgram() {
+    console.log('Get the episodes by programId' + this.state.programId)
+    const url ='http://localhost:3001/rest/episodes/' + this.state.programId
+    await axios.get(url)
+    .then(response => {
+      this.commit("setEpisodesOnProgram", response.data) 
+    })
+
+  },
+},
 
 
 },
@@ -177,6 +192,10 @@ export default createStore({
 
     getBroadcastOnChannel(state){
       return state.programsByChannelIdAndDate
+    }
+  }
+    getEpisodesOnProgram(state) {
+      return state.episodesByProgramId
     }
   }
   

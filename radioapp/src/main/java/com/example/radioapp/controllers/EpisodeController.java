@@ -16,13 +16,13 @@ public class EpisodeController {
     @Autowired
     private EpisodeService episodeService;
 
-    //Userstory 8
+    // Userstory 8
     @GetMapping("/rest/episodes/{programId}")
     public List<Episode> getById(@PathVariable String programId) {
         return episodeService.getEpisodeByProgramIdFromSR(programId);
     }
-    //Same same just more advanced (Specified)
-    //channelDate example 2021-01-25 ---> Postman
+    // Same same just more advanced (Specified)
+    // channelDate example 2021-01-25 ---> Postman
     @RequestMapping("rest/episodes/{channelId}/{channelDate}")
     public List<Episode> getByChannel(@PathVariable String channelId,@PathVariable String channelDate){
 

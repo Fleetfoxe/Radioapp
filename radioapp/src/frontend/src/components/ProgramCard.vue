@@ -16,6 +16,7 @@ export default {
     redirectToProgramDetails() {
       let routerUrl = '/program-details/' + this.program.id
       this.$router.push({path: routerUrl})
+
     }
   }
     
