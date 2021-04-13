@@ -1,10 +1,18 @@
 <template>
-  <h1>Episodes</h1>
+
+
+    <div class="episode-card">
+        <h2>Episodes</h2>
+        
+    </div>
 </template>
 
 <script>
-new Date(1618231050329).toLocaleString()
 export default {
+    props: ["episode"],
+
+Date = new Date(1618231050329).toLocaleString()
+
 
 }
 </script>

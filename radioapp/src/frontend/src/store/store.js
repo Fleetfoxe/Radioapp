@@ -13,7 +13,8 @@ export default createStore({
     programsByCategoryId: [],
     loggedInUser: null,
     channelId:0,
-    programsByChannelId:[]
+    programsByChannelId:[],
+    episodeByProgramId: []
   },
 
 
@@ -53,7 +54,11 @@ export default createStore({
     },
     setProgramsByChannelId(state, payload) {
       state.programsByChannelId = payload;
+    },
+    setEpisodeByProgramIdFromSR(state, payload) {
+      state.episodeByProgramId = payload;
     }
+
   },
 
 
@@ -107,7 +112,15 @@ export default createStore({
       this.commit("setProgramsByCategoryId", response.data)
     })
   },
+  async fetchEpisodeByProgramIdFromSR() {
+    console.log('Get the episodes by programId')
+    const url ='http://localhost:3001/rest/episodes/{programId}' + this.state.programId
+    await axios.get(url)
+    .then(response => {
+     this.commit("setEpisodeByProgramIdFromSR", response.data) 
+    })
 
+  },
 },
 
 
@@ -132,6 +145,9 @@ export default createStore({
     },
     getProgramsByChannelId(state){
       return state.programsByChannelId
+    },
+    getEpisodeByProgramIdFromSR(state){
+      return state.episodeByProgramId
     },
   },
   
