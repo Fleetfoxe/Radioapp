@@ -30,21 +30,8 @@ export default {
 </script>
 
 <style scoped>
-nav {
-  font-size: 40px;
-  padding: 5px;
-  background-color: lightblue;
-  border-bottom: 2px solid lightgray;
-  color: black;
-}
 
 
-a {
-  color: white
-}
 
-a:hover {
-  color: rgb(8, 8, 8);
-}
 
 </style>

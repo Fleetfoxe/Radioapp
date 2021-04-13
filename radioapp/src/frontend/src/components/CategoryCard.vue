@@ -26,15 +26,6 @@ export default {
 
 <style>
 
-.category-card {
-
-  background-color: lightgray;
-  margin-bottom: 20px;
-  padding: 10px;
-  font-family: 'Arial';
-  border-radius: 30px;
-  border: 5px solid whitesmoke;
-}
 
 
 
