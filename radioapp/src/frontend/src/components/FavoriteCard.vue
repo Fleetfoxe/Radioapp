@@ -1,33 +1,21 @@
 <template>
-  <div class="favorite-card">
-      <h3>{{ favoriteId }}</h3>
-      <h2>{{ program.name }}</h2>
-      <h4>{{ msg }}</h4>
+  <div class="favorite-card"  @click="redirectToProgramDetails">
+      <h3>{{ favoriteProgramId }}</h3>
+      <h4>{{ favoriteProgram.name }}</h4>
+      <h5>{{ favoriteProgram.description}}</h5>
   </div>
 </template>
 
 <script>
 export default {
-    props: ["favorite", "favoriteId", "msg"],
+    props: ["favoriteProgram", "favoriteProgramId" ],
 
-   
-
-    emits: ['get-programName'],
-        
-    computed: {
-    program() {
-            //This is step 4. Here we get the program object from store that comes from springboot 
-            return this.$store.getters.getProgramById
-        },
-    },
-    mounted() {
-        //This is step 2. We take the id from the id int in data() and we send it to ProgramId int in store.js
-        // it will be used to fetch the correct program from springboot
-        this.$store.commit("setProgramId", this.favoriteId)
-
-        //This is step 3. Here we activate the connection to springboot with action fetchProgramById
-        this.$store.dispatch("fetchProgramById");
+    methods: {
+    redirectToProgramDetails() {
+      let routerUrl = '/program-details/' + this.favoriteProgram.id
+      this.$router.push({path: routerUrl})
     }
+  },
 }
 </script>
 

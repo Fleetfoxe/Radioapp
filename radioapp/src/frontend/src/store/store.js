@@ -14,7 +14,7 @@ export default createStore({
     loggedInUser: null,
     channelId:0,
     programsByChannelId:[],
-    favorites: [],
+    favoritePrograms: [],
   },
 
 
@@ -55,8 +55,8 @@ export default createStore({
     setProgramsByChannelId(state, payload) {
       state.programsByChannelId = payload;
     },
-    setFavorites(state, payload) {
-      state.favorites = payload;
+    setFavoritePrograms(state, payload) {
+      state.favoritePrograms = payload;
     },
   },
 
@@ -82,6 +82,7 @@ export default createStore({
     async fetchPrograms() {
       console.log('SearchQuery is: '+this.state.searchQuery)
       const url ='http://localhost:3001/rest/programs/' + this.state.searchQuery
+      //const url ='http://localhost:3000/rest/programs/favorites'
       await axios.get(url)
       .then(response => {
        this.commit("setPrograms", response.data) 
@@ -111,6 +112,7 @@ export default createStore({
       this.commit("setProgramsByCategoryId", response.data)
     })
   },
+  //FetchFavoritePrograms does not work because of CORS
   async fetchFavoritePrograms(){
     await axios.get("http://localhost:3000/rest/programs/favorites")
     .then(response => {
@@ -144,8 +146,8 @@ export default createStore({
     getProgramsByChannelId(state){
       return state.programsByChannelId
     },
-    getFavorites(state){
-      return state.favorites
+    getFavoritePrograms(state){
+      return state.favoritePrograms
     },
   },
   

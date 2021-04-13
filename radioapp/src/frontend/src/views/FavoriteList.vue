@@ -4,12 +4,12 @@
 to se favorites
 </h2>
     <div v-if="isLoggedIn">
-    <div v-if="favorites.length > 0">
+    <div v-if="favoritePrograms.length > 0">
       <FavoriteCard
-        v-for="(favorite, i) in favorites"
-        :key="favorite + i"
-        :favorite="favorite"
-        :favoriteId="favorite.programId"
+        v-for="(favoriteProgram, i) in favoritePrograms"
+        :key="favoriteProgram + i"
+        :favoriteProgram="favoriteProgram"
+        :favoriteProgramId="favoriteProgram.id"
          />
         </div>
     </div>
@@ -18,17 +18,13 @@ to se favorites
 <script>
 import FavoriteCard from "../components/FavoriteCard";
 export default {
-    data() {
-        return {
-            programName: ''
-        }
-    },
+   
 components: {
     FavoriteCard
 },
 computed: {
-    favorites() {
-            return this.$store.getters.getFavorites
+    favoritePrograms() {
+            return this.$store.getters.getFavoritePrograms
         },
     loggedInUser() {
       return this.$store.state.loggedInUser
@@ -39,12 +35,12 @@ computed: {
 },
 methods: {
     async fetchFavorites() {
-            let favoriteFromBackend = await fetch('/rest/myFavorites', {
+            let favoriteProgramFromBackend = await fetch('/rest/programs/favorites', {
                 mode: 'no-cors',
             })
-            favoriteFromBackend = await favoriteFromBackend.json()
-            console.log('Favorite objects from backend: '+ favoriteFromBackend)
-            this.$store.commit("setFavorites", favoriteFromBackend)
+            favoriteProgramFromBackend = await favoriteProgramFromBackend.json()
+            console.log('Favorite objects from backend: '+ favoriteProgramFromBackend)
+            this.$store.commit("setFavoritePrograms", favoriteProgramFromBackend)
         }
 },
     mounted() {
