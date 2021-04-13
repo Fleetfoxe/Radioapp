@@ -1,6 +1,7 @@
 package com.example.radioapp.controllers;
 
 import com.example.radioapp.entities.Episode;
+import com.example.radioapp.entities.Program;
 import com.example.radioapp.services.EpisodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,11 @@ public class EpisodeController {
     public List<Episode> getByChannel(@PathVariable String channelId,@PathVariable String channelDate){
 
         return episodeService.getEpisodesOnChannelId(channelId,channelDate);
+    }
+    //get my favorite episodes (List of episodes that are favorites)
+    @GetMapping("/rest/episodes/favorites")
+    public List<Episode> showMyFavoritePrograms() {
+        return episodeService.showMyFavoriteEpisodes();
     }
 
 }
