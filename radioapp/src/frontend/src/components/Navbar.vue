@@ -8,6 +8,8 @@
       -
       <router-link to="/programlist">ProgramList</router-link>
       -
+      <router-link to="/favoritelist">Favorites</router-link>
+      -
       <router-link to="/Login">Login</router-link>
       /
       <button @click="logout">Logout</button>

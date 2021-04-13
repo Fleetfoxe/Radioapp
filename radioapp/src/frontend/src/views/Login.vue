@@ -63,7 +63,7 @@ export default {
             headers: {'Content-Type': 'application/json' },
             body: JSON.stringify(credentials)
         })
-        console.log('Response from regiter: '+response)
+        console.log('Response from register: '+response)
         }
     }
 }

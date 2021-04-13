@@ -46,6 +46,8 @@ export default {
   mounted() {
         this.$store.dispatch("fetchPrograms");
     }
+   
+
 };
 </script>
 

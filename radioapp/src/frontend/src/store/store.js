@@ -5,7 +5,7 @@ export default createStore({
   state: {
     categories: [],
     channels: [],
-    searchQuery: "P",
+    searchQuery: "",
     programs: [],
     programById: {},
     programId: 0,
@@ -19,6 +19,7 @@ export default createStore({
     programsByChannelIdAndDate:[],
     tempChannelId:164,
     theDate:"2021-04-13",
+    favoritePrograms: [],
     episodesByProgramId: []
   },
 
@@ -79,8 +80,11 @@ export default createStore({
     },
     setEpisodesOnProgram(state, payload) {
       state.episodesByProgramId = payload;
-    }
 
+    },
+    setFavoritePrograms(state, payload) {
+      state.favoritePrograms = payload;
+    },
   },
 
 
@@ -105,6 +109,7 @@ export default createStore({
     async fetchPrograms() {
       console.log('SearchQuery is: '+this.state.searchQuery)
       const url ='http://localhost:3001/rest/programs/' + this.state.searchQuery
+      //const url ='http://localhost:3000/rest/programs/favorites'
       await axios.get(url)
       .then(response => {
        this.commit("setPrograms", response.data) 
@@ -153,6 +158,15 @@ export default createStore({
     })
 
   },
+  //FetchFavoritePrograms does not work because of CORS
+  async fetchFavoritePrograms(){
+    await axios.get("http://localhost:3000/rest/programs/favorites")
+    .then(response => {
+     this.commit("setPrograms", response.data) 
+     console.log(response.data)
+    })
+  },
+
 },
 
 
@@ -192,6 +206,9 @@ export default createStore({
 
     getBroadcastOnChannel(state){
       return state.programsByChannelIdAndDate
+    },
+    getFavoritePrograms(state){
+      return state.favoritePrograms
     },
   
     getEpisodesOnProgram(state) {

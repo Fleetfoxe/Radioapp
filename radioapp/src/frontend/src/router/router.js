@@ -7,6 +7,8 @@ import ProgramDetails from "@/views/ProgramDetails.vue"
 import ChannelDetails from "@/views/ChannelDetails.vue"
 import CategoryDetails from "@/views/CategoryDetails.vue"
 import Login from "@/views/Login.vue"
+import FavoriteList from "@/views/FavoriteList.vue"
+
 
 
 
@@ -44,6 +46,10 @@ const routes = [
   {
     path: "/channel-details/:id",
     component: ChannelDetails
+  },
+  {
+    path: "/favoritelist",
+    component: FavoriteList
   },
 ];
 

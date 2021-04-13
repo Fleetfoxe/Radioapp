@@ -8,6 +8,9 @@ import javax.persistence.*;
 @Table(name="favorites")
 public class Favorite {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private long episodeId;
     private long programId;
 
@@ -29,6 +32,20 @@ public class Favorite {
         this.user = user;
     }
 
+    public Favorite(long id, long episodeId, long programId, User user) {
+        this.id = id;
+        this.episodeId = episodeId;
+        this.programId = programId;
+        this.user = user;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public long getProgramId() {
         return programId;
@@ -54,9 +71,11 @@ public class Favorite {
     public void setEpisodeId(long episodeId) {
         this.episodeId = episodeId;
     }
+
     @Override
     public String toString() {
         return "Favorite{" +
+                "id=" + id +
                 ", episodeId=" + episodeId +
                 ", programId=" + programId +
                 ", user=" + user +

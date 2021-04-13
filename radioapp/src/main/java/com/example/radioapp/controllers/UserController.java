@@ -68,9 +68,12 @@ public class UserController {
         return userService.addFavorite(favorite);
     }
 
-    //get MY favorites
+    //get MY favorites (List of favorite objects with Id numbers)
     @GetMapping("/rest/myFavorites")
     public List<Favorite> showMyFavorite() {
        return userService.showMyFavorites();
     }
+
+
+
 }
