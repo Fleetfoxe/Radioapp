@@ -14,7 +14,8 @@ export default createStore({
     loggedInUser: null,
     channelId:0,
     programsByChannelId:[],
-    episodeByProgramId: []
+    episodesByProgramId: [],
+    episodeOnProgram: 0   // Episode Id = som programId
   },
 
 
@@ -55,8 +56,11 @@ export default createStore({
     setProgramsByChannelId(state, payload) {
       state.programsByChannelId = payload;
     },
-    setEpisodeByProgramIdFromSR(state, payload) {
-      state.episodeByProgramId = payload;
+    //setEpisodeByProgramIdFromSR(state, payload) {
+     // state.episodesByProgramId = payload;
+   // },
+    setEpisodesOnProgram(state, payload) {
+      state.episodeOnProgram = payload;
     }
 
   },
@@ -112,12 +116,21 @@ export default createStore({
       this.commit("setProgramsByCategoryId", response.data)
     })
   },
-  async fetchEpisodeByProgramIdFromSR() {
+  /*async fetchEpisodesOnProgramIdFromSR() {
     console.log('Get the episodes by programId')
-    const url ='http://localhost:3001/rest/episodes/{programId}' + this.state.programId
+    const url ='http://localhost:3001/rest/episodes/' + this.state.programId
     await axios.get(url)
     .then(response => {
-     this.commit("setEpisodeByProgramIdFromSR", response.data) 
+      this.commit("setEpisodeByProgramIdFromSR", response.data) 
+    })
+
+  },*/
+  async fetchEpisodesOnProgram() {
+    console.log('Get the episodes by programId')
+    const url ='http://localhost:3001/rest/episodes/' + this.state.episodeOnProgram
+    await axios.get(url)
+    .then(response => {
+      this.commit("setEpisodesOnProgram", response.data) 
     })
 
   },
@@ -146,9 +159,12 @@ export default createStore({
     getProgramsByChannelId(state){
       return state.programsByChannelId
     },
-    getEpisodeByProgramIdFromSR(state){
-      return state.episodeByProgramId
-    },
-  },
+   // getEpisodeByProgramIdFromSR(state){
+    //  return state.episodesByProgramId
+   // },
+    getEpisodesOnProgram(state) {
+      return state.episodeOnProgram
+    }
+  }
   
 })

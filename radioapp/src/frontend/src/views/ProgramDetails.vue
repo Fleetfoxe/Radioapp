@@ -4,10 +4,23 @@
       <h4>{{ program.description }}</h4>
       <h4>Link to program image: </h4>
       <p>{{ program.programimage }}</p>
+      <p>{{ program.id }}</p>
+  </div>    
+     <div v-if="episodesByProgramId.length > 0">
+      <EpisodeCard
+        v-for="(episode, i) in episodesByProgramId"
+        console.log(episodesByProgramId)
+        :key="episode + i"
+        :episode="episode"
+      />
   </div>
+
+    <h1>{{ episodesByProgramId }}</h1>
+    
 </template>
 
 <script>
+import EpisodeCard from "../components/EpisodeCard";
 export default {
     data() {
         return {
@@ -20,7 +33,10 @@ export default {
     program() {
             //This is step 4. Here we get the program object from store that comes from springboot 
             return this.$store.getters.getProgramById
-        }
+        },
+         episodesByProgramId() {
+            return this.$store.getters.getEpisodesOnProgram
+       },
     },
 
     mounted() {
@@ -31,8 +47,18 @@ export default {
         // it will be used to fetch the correct program from springboot
         this.$store.commit("setProgramId", this.id)
 
+         
+         this.$store.dispatch("fetchEpisodesOnProgram");
+
+         
         //This is step 3. Here we activate the connection to springboot with action fetchProgramById
         this.$store.dispatch("fetchProgramById");
+
+         this.$store.commit("setEpisodeByProgramIdFromSR");
+
+    },
+    components: {
+        EpisodeCard
     }
 
 }
