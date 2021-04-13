@@ -1,7 +1,14 @@
 <template>
-  <div id="nav">
+ 
+   <div id="ourTitle">Our RadioApp</div>
+   <div id="nav">
     <Navbar />
-  </div>
+    </div>
+     
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+ 
+  <link rel="stylesheet" href="/styles.css"> 
+  
   <router-view/>
 </template>
 
@@ -26,27 +33,9 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  background-image: image("logo.png");
-}
 
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 
 
 </style>

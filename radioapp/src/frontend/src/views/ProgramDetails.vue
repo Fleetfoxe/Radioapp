@@ -2,10 +2,9 @@
   <div>
       <h1>{{ program.name }}</h1>
       <h4>{{ program.description }}</h4>
-      <h4>Link to program image: </h4>
-      <p>{{ program.programimage }}</p>
-     <!-- <img v-for="img in images" v-bind:src="{{ program.programimage }}"/>
-     -->
+      <img v-bind:src="program.programimage">
+   
+     
   </div>
 </template>
 
@@ -15,9 +14,11 @@ export default {
         return {
             //Here is the id of the program stored in this view
             id:'',
-            //images:[]
+            
+            
         }
     },
+ 
     computed: {
     program() {
             //This is step 4. Here we get the program object from store that comes from springboot 

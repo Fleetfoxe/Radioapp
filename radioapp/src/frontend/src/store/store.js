@@ -15,7 +15,10 @@ export default createStore({
     channelId:0,
     programsByChannelId:[],
     tempCategoryName: String,
-    tempChannelName: String
+    tempChannelName: String,
+    programsByChannelIdAndDate:[],
+    tempChannelId:164,
+    theDate:"2021-04-13"
   },
 
 
@@ -61,7 +64,17 @@ export default createStore({
     },
     setTempChannelName(state, payload){
       state.tempChannelName=payload;
-    }
+    },
+    setTempChannel(state, payload){
+      state.tempChannelId=payload;
+    },
+    setTheDate(state, payload){
+      state.theDate=payload;
+    },
+
+    setBroadcastOnChannel(state, payload) {
+      state.programsByChannelIdAndDate = payload;
+    },
     
   },
 
@@ -108,18 +121,27 @@ export default createStore({
        this.commit("setProgramsByChannelId", response.data) 
       })
     },
-  async fetchProgramsByCategoryId() {
-    console.log('Category Id: '+ this.state.categoryId)
-    const url = 'http://localhost:3001/rest/programs/category/' + this.state.categoryId
-    await axios.get(url)
-    .then(response => {
-      this.commit("setProgramsByCategoryId", response.data)
-    })
-  },
+    async fetchProgramsByCategoryId() {
+      console.log('Category Id: '+ this.state.categoryId)
+      const url = 'http://localhost:3001/rest/programs/category/' + this.state.categoryId
+      await axios.get(url)
+      .then(response => {
+        this.commit("setProgramsByCategoryId", response.data)
+      })
+    },
+
+    async fetchEpisodesOnChannelAndDate() {
+      
+      const url = 'http://localhost:3001/rest/episodes/' +this.state.tempChannelId+"/"+ this.state.theDate
+      console.log(url)
+       await axios.get(url)
+      .then(response => {
+        this.commit("setBroadcastOnChannel", response.data)
+      })
+    },
+
 
 },
-
-
 
   // Hämtar datan åt komponenter
   getters: {
@@ -148,8 +170,14 @@ export default createStore({
     
     getChannelName(state){
       return state.tempChannelName
+    },
+    getChannelId(state){
+      return state.tempChannelId
+    },
 
+    getBroadcastOnChannel(state){
+      return state.programsByChannelIdAndDate
     }
-  },
+  }
   
 })

@@ -2,7 +2,10 @@
 <div class="channel-card" @click="redirectToChannelDetails">
   
    <h2>
-   <span>{{channel.name}} </span> 
+  <!-- {{channel.name}} -->
+      <img v-bind:src="channel.image">
+       <!--{{channel.scheduleurl}} -->
+      
   
    </h2>
 </div>
@@ -15,6 +18,7 @@ export default {
    methods: {
     redirectToChannelDetails() {
       this.$store.commit("setTempChannelName", this.channel.name)
+    
       let routerUrl = '/channel-details/' + this.channel.id
       this.$router.push({path: routerUrl})
       
@@ -27,24 +31,7 @@ export default {
 
 <style>
 
-.channel-card {
-  background-color: lightgray;
-  margin-bottom: 20px;
-  padding: 10px;
-  font-family: 'Arial';
-  border-radius: 30px;
-  border: 5px solid whitesmoke;
-  
-}
-.channel-card:hover {
-  background-color: rgb(117, 114, 114);
-  margin-bottom: 20px;
-  padding: 10px;
-  font-family: 'Arial';
-  border-radius: 30px;
-  border: 5px solid whitesmoke;
-  
-}
+
 
 
 
