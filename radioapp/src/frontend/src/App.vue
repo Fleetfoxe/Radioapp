@@ -1,10 +1,14 @@
 <template>
-  <div id="nav">
+ 
+   <div id="ourTitle">Our RadioApp</div>
+   <div id="nav">
     <Navbar />
+    </div>
+     
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
  
   <link rel="stylesheet" href="/styles.css"> 
-  </div>
+  
   <router-view/>
 </template>
 

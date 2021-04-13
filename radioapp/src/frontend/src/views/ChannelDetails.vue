@@ -18,6 +18,8 @@
       />
       </div>
 
+      <h2>Episodes</h2>
+
         <div v-if=" broadcastOnChannel.length > 0">
       <EpisodeCard
         v-for="(episode, i) in  broadcastOnChannel"
