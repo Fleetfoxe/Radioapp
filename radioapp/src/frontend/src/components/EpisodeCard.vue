@@ -3,7 +3,7 @@
 
     <div class="episode-card">
         <h2>Episodes</h2>
-        <h3>{{ episode.getEpisodeByProgramIdFromSR }}</h3>
+        <h3>{{ episode.title }}</h3>
         
     </div>
 </template>

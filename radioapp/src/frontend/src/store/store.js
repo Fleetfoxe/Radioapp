@@ -14,8 +14,8 @@ export default createStore({
     loggedInUser: null,
     channelId:0,
     programsByChannelId:[],
-    episodesByProgramId: [],
-    episodeOnProgram: 0   // Episode Id = som programId
+    episodesByProgramId: []
+    //episodeOnProgram: 0   // Episode Id = som programId
   },
 
 
@@ -60,7 +60,7 @@ export default createStore({
      // state.episodesByProgramId = payload;
    // },
     setEpisodesOnProgram(state, payload) {
-      state.episodeOnProgram = payload;
+      state.episodesByProgramId = payload;
     }
 
   },
@@ -126,8 +126,8 @@ export default createStore({
 
   },*/
   async fetchEpisodesOnProgram() {
-    console.log('Get the episodes by programId')
-    const url ='http://localhost:3001/rest/episodes/' + this.state.episodeOnProgram
+    console.log('Get the episodes by programId' + this.state.programId)
+    const url ='http://localhost:3001/rest/episodes/' + this.state.programId
     await axios.get(url)
     .then(response => {
       this.commit("setEpisodesOnProgram", response.data) 
@@ -163,7 +163,7 @@ export default createStore({
     //  return state.episodesByProgramId
    // },
     getEpisodesOnProgram(state) {
-      return state.episodeOnProgram
+      return state.episodesByProgramId
     }
   }
   

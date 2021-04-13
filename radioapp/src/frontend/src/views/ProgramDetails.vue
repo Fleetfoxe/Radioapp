@@ -9,13 +9,11 @@
      <div v-if="episodesByProgramId.length > 0">
       <EpisodeCard
         v-for="(episode, i) in episodesByProgramId"
-        console.log(episodesByProgramId)
         :key="episode + i"
         :episode="episode"
       />
   </div>
 
-    <h1>{{ episodesByProgramId }}</h1>
     
 </template>
 
@@ -54,7 +52,7 @@ export default {
         //This is step 3. Here we activate the connection to springboot with action fetchProgramById
         this.$store.dispatch("fetchProgramById");
 
-         this.$store.commit("setEpisodeByProgramIdFromSR");
+       //  this.$store.commit("setEpisodeByProgramIdFromSR");
 
     },
     components: {
