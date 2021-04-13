@@ -4,6 +4,7 @@
   <h2>
     {{program.name}}
   </h2>
+  <button @click="">Add favorite</button>
   </span>
 </div>
 </template>
