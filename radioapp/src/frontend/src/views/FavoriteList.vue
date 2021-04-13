@@ -39,13 +39,12 @@ methods: {
                 mode: 'no-cors',
             })
             favoriteProgramFromBackend = await favoriteProgramFromBackend.json()
-            console.log('Favorite objects from backend: '+ favoriteProgramFromBackend)
+            //console.log('Favorite objects from backend: '+ favoriteProgramFromBackend)
             this.$store.commit("setFavoritePrograms", favoriteProgramFromBackend)
         }
 },
     mounted() {
         this.fetchFavorites()
-        //this.$store.dispatch("fetchFavorites");
     }
 }
 </script>
