@@ -1,12 +1,12 @@
 <template>
-<div>
+<div  class="program-card">
 
-  <div class="program-card" @click="redirectToProgramDetails">
+  <div @click="redirectToProgramDetails">
     <h2> {{program.name}} </h2>
 </div>
   <!-- Only show buttons if user is logged in -->
   <div v-if="isLoggedIn">
-  <button @click="addFavorite(this.program.id)">Add {{program.name}} as favorite</button>
+  <button @click="addFavorite(this.program.id)">Add favorite</button>
   </div>
 </div>
 </template>

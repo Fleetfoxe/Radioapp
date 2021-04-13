@@ -234,7 +234,6 @@ public class ProgramService {
 
         //Gets a list of favorite objects by using the showMyFavorites method
         List<com.example.radioapp.entities.Favorite> favorites = userService.showMyFavorites();
-        System.out.println("List of favorite objects: "+favorites);
 
         //Creates a list of long variables to store program ids in
         List<Long> listOfFavProgramIds = new ArrayList<Long>();
@@ -254,10 +253,14 @@ public class ProgramService {
 
         List<Program> programs = new ArrayList<>();
 
+        //Loops through the list of programIds from the favorites
         for (long favProgramId : listOfFavProgramIds) {
 
+            //Loops through all programs from SR
             for (Map program : programMaps) {
                 int programId = (int) program.get("id");
+
+                //checks if program id from favorite and program id is the same
                 if (favProgramId == programId) {
 
                     Map programCategory = (Map) program.get("programcategory");
@@ -280,14 +283,11 @@ public class ProgramService {
                                 (String) program.get("description"),
                                 (String) program.get("programurl"),
                                 (String) program.get("programimage")
-
                         );
-
-                        programs.add(program1);
+                    programs.add(program1);
                 }
             }
         }
-
         return programs;
     }
 

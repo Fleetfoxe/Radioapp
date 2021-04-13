@@ -1,7 +1,7 @@
 <template>
-<h2 v-if="!isLoggedIn">User not logged in, 
+<h2 v-if="!isLoggedIn">Please  
 <router-link to="/Login">Login</router-link>
-to se favorites
+to see favorites
 </h2>
     <div v-if="isLoggedIn">
     <div v-if="favoritePrograms.length > 0">

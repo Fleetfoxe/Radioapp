@@ -1,6 +1,5 @@
 <template>
   <div class="favorite-card"  @click="redirectToProgramDetails">
-      <h3>{{ favoriteProgramId }}</h3>
       <h4>{{ favoriteProgram.name }}</h4>
       <h5>{{ favoriteProgram.description}}</h5>
   </div>
