@@ -18,7 +18,7 @@ export default createStore({
     tempChannelName: String,
     programsByChannelIdAndDate:[],
     tempChannelId:164,
-    theDate:"2021-04-13"
+    theDate:"2021-04-13",
     episodesByProgramId: []
   },
 
@@ -156,7 +156,7 @@ export default createStore({
 },
 
 
-},
+
 
   // Hämtar datan åt komponenter
   getters: {
@@ -192,11 +192,11 @@ export default createStore({
 
     getBroadcastOnChannel(state){
       return state.programsByChannelIdAndDate
-    }
-  }
+    },
+  
     getEpisodesOnProgram(state) {
       return state.episodesByProgramId
-    }
+    },
   }
   
 })
