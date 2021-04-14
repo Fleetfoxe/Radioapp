@@ -30,19 +30,21 @@
 
 export default {
     props: ["episode"],
-    computed: {
+   
+   computed: {
     loggedInUser() {
       return this.$store.state.loggedInUser
     },
     isLoggedIn() {
       return this.loggedInUser != null
-    }
-},
-methods: {
+    },
 
-    computed: {
-      ourDate() {
+    ourDate() {
         return new Date(this.episode.startTimeUtc).toLocaleString();
+},
+},
+
+methods: {
     
     async addFavorite(episodeId) {
         //Putting programID in credentials 
