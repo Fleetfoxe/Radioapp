@@ -1,5 +1,6 @@
 <template>
 <div>
+  <h1>Programs</h1>
 <form @submit.prevent="searchMethod">
 <input type="text" id="search" placeholder="type search" v-model="searchtext">
 <button type="submit">Search</button>
