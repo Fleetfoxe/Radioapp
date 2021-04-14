@@ -20,11 +20,11 @@ export default {
 
 <style>
 .favorite-card {
-  background-color: lightgray;
+  background-color: rgb(39, 37, 37);
   margin-bottom: 20px;
   padding: 10px;
   font-family: 'Arial';
   border-radius: 30px;
-  border: 5px solid whitesmoke;
+  border: 1px solid gray;
 }
 </style>

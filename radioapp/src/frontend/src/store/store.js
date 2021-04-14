@@ -20,7 +20,8 @@ export default createStore({
     tempChannelId:164,
     theDate:"2021-04-13",
     favoritePrograms: [],
-    episodesByProgramId: []
+    episodesByProgramId: [],
+    favoriteEpisodes: [],
   },
 
 

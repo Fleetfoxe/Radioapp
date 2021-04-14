@@ -240,7 +240,9 @@ public class ProgramService {
 
         //Loops through the list of favorite objects and puts the program ids into list of long variables
         for (Favorite favorite : favorites) {
-            listOfFavProgramIds.add(favorite.getProgramId());
+            if (favorite.getProgramId() != 0 ) {
+                listOfFavProgramIds.add(favorite.getProgramId());
+            }
         }
 
         RestTemplate template = new RestTemplate();

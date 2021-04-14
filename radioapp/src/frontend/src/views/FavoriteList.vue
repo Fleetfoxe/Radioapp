@@ -34,7 +34,7 @@ computed: {
     },
 },
 methods: {
-    async fetchFavorites() {
+    async fetchFavoritePrograms() {
             let favoriteProgramFromBackend = await fetch('/rest/programs/favorites', {
                 mode: 'no-cors',
             })
@@ -44,7 +44,7 @@ methods: {
         }
 },
     mounted() {
-        this.fetchFavorites()
+        this.fetchFavoritePrograms()
     }
 }
 </script>
