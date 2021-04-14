@@ -59,8 +59,11 @@ export default {
        //  this.$store.commit("setEpisodeByProgramIdFromSR");
 
     },
+    date() {
+        
+    },
     components: {
-        EpisodeCard
+        EpisodeCard,
     }
 
 }

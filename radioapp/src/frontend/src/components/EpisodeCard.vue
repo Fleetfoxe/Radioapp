@@ -1,7 +1,13 @@
 <template>
     <div class="episode-card">
-        <h2>{{episode.title}}</h2>
-        <h2>{{episode.startTimeUtc}}</h2>
+
+        
+        <h2>
+          {{ ourDate }}
+          - 
+          {{episode.title}}
+          
+        </h2>
 
 <!-- Only show buttons if user is logged in -->
   <div v-if="isLoggedIn">
@@ -15,6 +21,12 @@
 
 
 <script>
+// theDate = new Date().toLocaleString()
+//let thisDate;
+
+//thisDate = new Date().toLocaleString(); // Calling the constructor for the date --> gets current date time
+//thisDate = new Date(this.episode.startTimeUtc).toLocaleString();
+//console.log(thisDate);
 
 export default {
     props: ["episode"],
@@ -28,6 +40,9 @@ export default {
 },
 methods: {
 
+    computed: {
+      ourDate() {
+        return new Date(this.episode.startTimeUtc).toLocaleString();
     
     async addFavorite(episodeId) {
         //Putting programID in credentials 
