@@ -1,33 +1,44 @@
 <template>
   <div>
-      <h1>Programs on {{channelName}}</h1>
-      <h2>channel details</h2>
+      <h1>Broadcast and Programs on {{channelName}}</h1>
+      <h2>----------------------------------------</h2>
+</div>
+<div class="split left">
+  <div class="centerd">
+      <h2>search episodes on date</h2>
 
       <form @submit.prevent="searchMethod">
-      <input type="text" id="search" placeholder="type search" v-model="searchDate">
+      <input type="text" id="search" placeholder="YYYY-MM-DD" v-model="searchDate">
       <button type="submit">Date</button>
       </form>
-     
-  </div>
+  
+     <h1>Episodes</h1>
 
-        <div v-if=" programsByChannelId.length > 0">
-      <ProgramCard
-        v-for="(program, i) in  programsByChannelId"
-        :key="program + i"
-        :program="program"
-      />
-      </div>
-
-      <h2>Episodes</h2>
-
-        <div v-if=" broadcastOnChannel.length > 0">
+        <li  class="episodes" v-if=" broadcastOnChannel.length > 0">
       <EpisodeCard
         v-for="(episode, i) in  broadcastOnChannel"
         :key="episode + i"
         :episode="episode"
       />
       
-      </div> 
+      </li> 
+      </div>
+      </div>
+
+      <div class="split right">
+         <div class="centerd">
+      <h1>Programs</h1>
+          <li class="programs" v-if=" programsByChannelId.length > 0">
+      <ProgramCard
+        v-for="(program, i) in  programsByChannelId"
+        :key="program + i"
+        :program="program"
+      />
+      </li>     
+      </div>
+      </div>
+
+      
 <!--
 <h1>
 {{broadcastOnChannel}}
@@ -63,8 +74,7 @@ export default {
     },
 
     components: {
-    ProgramCard,
-    EpisodeCard
+    ProgramCard, EpisodeCard
   },
 
   computed: {
@@ -108,6 +118,32 @@ export default {
 </script>
 
 <style>
+.split{
+  height: 100%;
+  width: 50%;
+  position:fixed;
+  z-index:1;
+  top:auto;
+  overflow-x: hidden;
+  padding-top: 20px;
+  
+
+}
+.left{
+  left:0;
+  background-color: #2c3e50;
+}
+.right{
+  right:0;
+  background-color:#2c3e50;
+}
+.centered{
+  position:absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
 
 
 </style>

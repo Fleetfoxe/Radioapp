@@ -56,5 +56,16 @@ export default {
 </script>
 
 <style>
+.program-card {
+  background-color: lightgray;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-family: 'Arial';
+  border-radius: 30px;
+  border: 5px solid whitesmoke;
+  width: 100%;
+  
+  }
+  
 
 </style>

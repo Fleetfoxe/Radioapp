@@ -1,18 +1,30 @@
 <template>
-  <div>
-      <h1>{{ program.name }}</h1>
-      <h4>{{ program.description }}</h4>
+ 
+ <div class="top">
+      {{ program.name }}</div>
+      <div class="top2">
+      {{ program.description }}
+      </div>
+ <div class="split left">
+  <div class="centered">
       <img v-bind:src="program.programimage">
    
-     
-      <p>{{ program.id }}</p>
-  </div>    
-     <div v-if="episodesByProgramId.length > 0">
+    </div> 
+    </div >
+      <!--<p>{{ program.id }}</p> -->
+
+ <div class="split right">
+  <div class="centered">
+      
+     <li class="episode-list" v-if="episodesByProgramId.length > 0">
+         
       <EpisodeCard
         v-for="(episode, i) in episodesByProgramId"
         :key="episode + i"
         :episode="episode"
       />
+  </li>
+  </div>
   </div>
 
     
@@ -67,5 +79,47 @@ export default {
 </script>
 
 <style>
+
+
+.split{
+  height: 100%;
+  width: 50%;
+  position:fixed;
+  z-index:1;
+  top:auto;
+  overflow-x: hidden;
+  padding-top: 10px;
+  
+
+}
+.left{
+  left:0;
+  background-color: #2c3e50;
+ 
+}
+.right{
+  right:0;
+  background-color: #2c3e50;
+  top: 0%;
+  
+}
+.centered{
+  position:absolute;
+  top:20%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+.top{
+    font-size: 60px;
+    background-color: #a3a7aa;
+    
+}
+.top2{
+    font-size: 40px;
+    background-color: #a3a7aa;
+    
+}
+
 
 </style>
