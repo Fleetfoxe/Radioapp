@@ -74,8 +74,16 @@ methods: {
 
 
 <style>
-
+.episode-card {
+  background-color: lightgray;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-family: 'Arial';
+  border-radius: 30px;
+  border: 5px solid whitesmoke;
+  width: 100%;
+  
+  }
 
 
 </style>
-// Date = new Date(1618231050329).toLocaleString()

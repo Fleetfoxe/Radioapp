@@ -32,6 +32,24 @@ export default {
 </script>
 
 <style scoped>
+nav {
+  font-size: 40px;
+  padding: 5px;
+  background-color: rgb(89, 143, 143);
+  border-bottom: 2px solid lightgray;
+  border-radius: 30px;
+  color: black;
+}
+
+
+a {
+  color: white
+}
+
+a:hover {
+  color: rgb(8, 8, 8);
+}
+
 
 
 

@@ -22,5 +22,7 @@ export default {
 }
 </script>
 <style>
-
+#Home{
+  height: 100%;
+  background-color: cadetblue;}
 </style>
