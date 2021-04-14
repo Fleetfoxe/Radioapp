@@ -1,10 +1,12 @@
 <template>
   <div>
-      <h1>Broadcast and Programs on {{channelName}}</h1>
+      <h1>{{channelName}}</h1>
+      <h1>Episodes----------------------------Programs</h1>
       <h2>----------------------------------------</h2>
 </div>
 <div class="split left">
   <div class="centerd">
+    
       <h2>search episodes on date</h2>
 
       <form @submit.prevent="searchMethod">

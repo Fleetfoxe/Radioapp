@@ -20,7 +20,7 @@ export default {
 
 <style>
 .favorite-episode-card {
-  background-color: rgb(39, 37, 37);
+  background-color: lightgray;
   margin-bottom: 20px;
   padding: 10px;
   font-family: 'Arial';
