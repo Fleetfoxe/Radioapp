@@ -1,6 +1,8 @@
 package com.example.radioapp.services;
 
 import com.example.radioapp.entities.Episode;
+import com.example.radioapp.entities.Favorite;
+import com.example.radioapp.entities.Program;
 import com.example.radioapp.repositories.EpisodeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ import java.util.*;
 public class EpisodeService {
     @Autowired
     private EpisodeRepo episodeRepo;
+    @Autowired
+    private UserService userService;
+
     private String episodeApi = "http://api.sr.se/api/v2/episodes/index?format=json&programid=";
     private String episodeApiChannels = "http://api.sr.se/api/v2/scheduledepisodes?format=json&channelid=";
 
@@ -109,9 +114,84 @@ public class EpisodeService {
         System.out.println(episodes);
         return episodes;
 
-
     }
 
+
+    //
+    //This method shows favorite episodes
+    //
+
+    private String episodeByIdURL = "http://api.sr.se/api/v2/episodes/getlist?format=json&ids=";
+
+    public List<Episode> showMyFavoriteEpisodes() {
+
+        //Gets a list of favorite objects by using the showMyFavorites method
+        List<com.example.radioapp.entities.Favorite> favorites = userService.showMyFavorites();
+
+        //Creates a list of long variables to store episode ids in
+        List<Long> listOfFavEpisodeIds = new ArrayList<Long>();
+
+        //Resets URL string
+        String newEpisodeByIdURL = "http://api.sr.se/api/v2/episodes/getlist?format=json&ids=";
+
+        //Loops through the list of favorite objects adds episode ids to url for SR api
+        for (Favorite favorite : favorites) {
+            if (favorite.getEpisodeId() != 0 ) {
+                newEpisodeByIdURL += favorite.getEpisodeId() + ",";
+            }
+        }
+
+        //This removes the last comma in the URL
+        newEpisodeByIdURL = newEpisodeByIdURL.replaceAll(",$", "");
+
+        //Debug
+        System.out.println(newEpisodeByIdURL);
+
+        RestTemplate template = new RestTemplate();
+        Map response = template.getForObject(newEpisodeByIdURL, Map.class);
+
+        //Here starts the mapping of objects from SR
+        List<Map> episodeMaps = (List<Map>)response.get("episodes");
+
+        if(episodeMaps==null) return null;
+
+        List<Episode> episodes= new ArrayList<>();
+
+        for(Map episode :episodeMaps){
+            //create a episode object with extracted data
+            // id, title, starttimeutc, endtimeutc, program, channel, imageurl
+
+
+            Map broadcastTime=(Map) episode.get("broadcasttime");
+
+            // STEP 1:
+            String date = (String) broadcastTime.get("starttimeutc"); // Insert broadcast.get("start time utc") in string variable = date
+            System.out.println(date); // Test date
+
+            // STEP 2: Endast få ut siffror från date + sätt in i ny variabel (int, long) SIMPLE DATE FORMAT
+            String digitsOnly = date.replaceAll("[^0-9]", ""); // Only extracts digits from date (String)
+            System.out.println(digitsOnly); // Test so that we only get the digits from string
+
+            // STEP 3: Create a long variable and declare it with String digitsOnly and parse it to long.
+            long longDigits = Long.parseLong(digitsOnly);
+
+            // STEP 4: insert long variable in object
+            Episode episode1= new Episode(
+                    (int) episode.get("id"),
+                    (String)episode.get("title"),
+                    longDigits,
+                    (String)broadcastTime.get("endtimeutc"),
+                    //(int)episode.get("channelid"),    We can't make this work, returns null value
+                    (String)episode.get("imageurl")
+            );
+
+            episodes.add(episode1);
+
+        }
+        System.out.println(episodes);
+        return episodes;
+
+    }
     
 
 }

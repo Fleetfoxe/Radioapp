@@ -20,7 +20,8 @@ export default createStore({
     tempChannelId:164,
     theDate:"2021-04-13",
     favoritePrograms: [],
-    episodesByProgramId: []
+    episodesByProgramId: [],
+    favoriteEpisodes: [],
   },
 
 
@@ -84,6 +85,10 @@ export default createStore({
     },
     setFavoritePrograms(state, payload) {
       state.favoritePrograms = payload;
+    },
+
+    setFavoriteEpisodes(state, payload) {
+      state.favoriteEpisodes = payload;
     },
   },
 
@@ -213,6 +218,10 @@ export default createStore({
   
     getEpisodesOnProgram(state) {
       return state.episodesByProgramId
+    },
+
+    getFavoriteEpisodes(state){
+      return state.favoriteEpisodes
     },
   }
   
