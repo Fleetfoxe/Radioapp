@@ -2,11 +2,11 @@
   <nav>
       <router-link to="/">Home</router-link>
       -
-      <router-link to="/channellist">ChannelList</router-link>
+      <router-link to="/channellist">Channels</router-link>
       -
-      <router-link to="/categorylist">CategoryList</router-link>
+      <router-link to="/categorylist">Categories</router-link>
       -
-      <router-link to="/programlist">ProgramList</router-link>
+      <router-link to="/programlist">Programs</router-link>
       -
       <router-link to="/favoritelist">Favorites</router-link>
       -
