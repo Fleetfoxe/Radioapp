@@ -37,7 +37,8 @@ public class EpisodeService {
             //create a episode object with extracted data
             // id, title, starttimeutc, endtimeutc, program, channel, imageurl
 
-            
+            // --------------------- USER STORY 8 ---------------------------------------
+
             Map broadcastTime=(Map) episode.get("broadcasttime");
 
             // STEP 1:

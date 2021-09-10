@@ -38,7 +38,10 @@ export default {
     isLoggedIn() {
       return this.loggedInUser != null
     },
+    
+    //------- User Story 8 -------------
 
+    // Final step: Create a function (ourDate) that will get the the start time from the API and convert it from epoch to UTC
     ourDate() {
         return new Date(this.episode.startTimeUtc).toLocaleString();
 },

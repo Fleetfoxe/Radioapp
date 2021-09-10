@@ -6,7 +6,8 @@
 
       
 </div>
-
+      <!-- Insert program in programsByCategoryId (Nestlar componenten ProgramCard i CategoryDetails)  (User story 5)-->
+      <!-- Loopar ut (v-for) listan av program enskilt = Skapar varje "program" som en egen komponent (User story 5)-->
         <div v-if="programsByCategoryId.length > 0">
       <ProgramCard
         v-for="(program, i) in programsByCategoryId"

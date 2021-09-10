@@ -69,6 +69,13 @@ public class ProgramService {
     }
 
 
+    //-------------- User story 5 -----------------------
+    // 1. create a string variable and insert the API address to access it.
+    // 2. create a method that will return a list of the given class.
+    // 3. Create a RestTemplate object to handle objects/data from given API.
+    // 4. Map use template method to get objects from the given API.
+    // 5. Point at "programcategory" in the given API to get the object
+    // 6. return Listed and Converted data from API.
 
     private String allProgramApi = "http://api.sr.se/api/v2/programs/?format=json&pagination=false";
 
@@ -87,7 +94,10 @@ public class ProgramService {
 
             Map programCategory = (Map) program.get("programcategory");
 
-            //LIFEHACK
+            // LIFEHACK
+            // Makes sure that you can take out a variable and work with it before putting it back on its place.
+            // The reason why we do this is because som programs does not have a category. These category-less programs
+            // will return 0. However if it has a category it will get its "id".
             int catId = 0;
             if (programCategory != null){
                 catId = (int) programCategory.get("id");
